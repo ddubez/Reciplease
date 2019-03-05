@@ -14,6 +14,8 @@
 		4F45CE1C222EF2F0004246EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F45CE1B222EF2F0004246EE /* Assets.xcassets */; };
 		4F45CE1F222EF2F0004246EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F45CE1D222EF2F0004246EE /* LaunchScreen.storyboard */; };
 		4F45CE2A222EF2F0004246EE /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F45CE29222EF2F0004246EE /* RecipleaseTests.swift */; };
+		4F45CE3E222EF573004246EE /* ServicesKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F45CE3D222EF573004246EE /* ServicesKey.swift */; };
+		4F45CE40222EF5A6004246EE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4F45CE3F222EF5A6004246EE /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		4F45CE25222EF2F0004246EE /* RecipleaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F45CE29222EF2F0004246EE /* RecipleaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseTests.swift; sourceTree = "<group>"; };
 		4F45CE2B222EF2F0004246EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F45CE3D222EF573004246EE /* ServicesKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesKey.swift; sourceTree = "<group>"; };
+		4F45CE3F222EF5A6004246EE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,13 +83,10 @@
 		4F45CE10222EF2ED004246EE /* Reciplease */ = {
 			isa = PBXGroup;
 			children = (
-				4F45CE11222EF2ED004246EE /* AppDelegate.swift */,
-				4F45CE13222EF2ED004246EE /* ViewController.swift */,
-				4F45CE15222EF2ED004246EE /* Main.storyboard */,
-				4F45CE1B222EF2F0004246EE /* Assets.xcassets */,
-				4F45CE1D222EF2F0004246EE /* LaunchScreen.storyboard */,
-				4F45CE20222EF2F0004246EE /* Info.plist */,
-				4F45CE18222EF2ED004246EE /* Reciplease.xcdatamodeld */,
+				4F45CE35222EF3B0004246EE /* Model */,
+				4F45CE36222EF3B7004246EE /* View */,
+				4F45CE37222EF3BD004246EE /* Controller */,
+				4F45CE38222EF3C8004246EE /* SupportingFiles */,
 			);
 			path = Reciplease;
 			sourceTree = "<group>";
@@ -99,6 +100,43 @@
 			path = RecipleaseTests;
 			sourceTree = "<group>";
 		};
+		4F45CE35222EF3B0004246EE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4F45CE18222EF2ED004246EE /* Reciplease.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4F45CE36222EF3B7004246EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4F45CE15222EF2ED004246EE /* Main.storyboard */,
+				4F45CE1D222EF2F0004246EE /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4F45CE37222EF3BD004246EE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4F45CE13222EF2ED004246EE /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4F45CE38222EF3C8004246EE /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				4F45CE11222EF2ED004246EE /* AppDelegate.swift */,
+				4F45CE1B222EF2F0004246EE /* Assets.xcassets */,
+				4F45CE20222EF2F0004246EE /* Info.plist */,
+				4F45CE3D222EF573004246EE /* ServicesKey.swift */,
+				4F45CE3F222EF5A6004246EE /* .gitignore */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -109,6 +147,7 @@
 				4F45CE0A222EF2ED004246EE /* Sources */,
 				4F45CE0B222EF2ED004246EE /* Frameworks */,
 				4F45CE0C222EF2ED004246EE /* Resources */,
+				4F45CE34222EF351004246EE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -180,6 +219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F45CE40222EF5A6004246EE /* .gitignore in Resources */,
 				4F45CE1F222EF2F0004246EE /* LaunchScreen.storyboard in Resources */,
 				4F45CE1C222EF2F0004246EE /* Assets.xcassets in Resources */,
 				4F45CE17222EF2ED004246EE /* Main.storyboard in Resources */,
@@ -195,12 +235,33 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4F45CE34222EF351004246EE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4F45CE0A222EF2ED004246EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4F45CE1A222EF2ED004246EE /* Reciplease.xcdatamodeld in Sources */,
+				4F45CE3E222EF573004246EE /* ServicesKey.swift in Sources */,
 				4F45CE14222EF2ED004246EE /* ViewController.swift in Sources */,
 				4F45CE12222EF2ED004246EE /* AppDelegate.swift in Sources */,
 			);
@@ -366,7 +427,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A5M6QHPHN6;
-				INFOPLIST_FILE = Reciplease/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Reciplease/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -374,7 +435,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = fr.daviddubez.Reciplease;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -384,7 +445,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A5M6QHPHN6;
-				INFOPLIST_FILE = Reciplease/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Reciplease/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -392,7 +453,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = fr.daviddubez.Reciplease;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
