@@ -41,7 +41,7 @@
 		4F45CE29222EF2F0004246EE /* RecipleaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseTests.swift; sourceTree = "<group>"; };
 		4F45CE2B222EF2F0004246EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F45CE3D222EF573004246EE /* ServicesKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesKey.swift; sourceTree = "<group>"; };
-		4F45CE3F222EF5A6004246EE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		4F45CE3F222EF5A6004246EE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = Reciplease/SupportingFiles/.gitignore; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
