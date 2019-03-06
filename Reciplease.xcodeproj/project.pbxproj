@@ -14,7 +14,6 @@
 		4F45CE1C222EF2F0004246EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F45CE1B222EF2F0004246EE /* Assets.xcassets */; };
 		4F45CE1F222EF2F0004246EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F45CE1D222EF2F0004246EE /* LaunchScreen.storyboard */; };
 		4F45CE2A222EF2F0004246EE /* RecipleaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F45CE29222EF2F0004246EE /* RecipleaseTests.swift */; };
-		4F45CE3E222EF573004246EE /* ServicesKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F45CE3D222EF573004246EE /* ServicesKey.swift */; };
 		4F45CE40222EF5A6004246EE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4F45CE3F222EF5A6004246EE /* .gitignore */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +39,6 @@
 		4F45CE25222EF2F0004246EE /* RecipleaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecipleaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F45CE29222EF2F0004246EE /* RecipleaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipleaseTests.swift; sourceTree = "<group>"; };
 		4F45CE2B222EF2F0004246EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4F45CE3D222EF573004246EE /* ServicesKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesKey.swift; sourceTree = "<group>"; };
 		4F45CE3F222EF5A6004246EE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = Reciplease/SupportingFiles/.gitignore; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -131,7 +129,6 @@
 				4F45CE11222EF2ED004246EE /* AppDelegate.swift */,
 				4F45CE1B222EF2F0004246EE /* Assets.xcassets */,
 				4F45CE20222EF2F0004246EE /* Info.plist */,
-				4F45CE3D222EF573004246EE /* ServicesKey.swift */,
 				4F45CE3F222EF5A6004246EE /* .gitignore */,
 			);
 			path = SupportingFiles;
@@ -261,7 +258,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F45CE1A222EF2ED004246EE /* Reciplease.xcdatamodeld in Sources */,
-				4F45CE3E222EF573004246EE /* ServicesKey.swift in Sources */,
 				4F45CE14222EF2ED004246EE /* ViewController.swift in Sources */,
 				4F45CE12222EF2ED004246EE /* AppDelegate.swift in Sources */,
 			);
