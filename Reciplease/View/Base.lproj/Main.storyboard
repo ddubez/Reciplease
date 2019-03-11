@@ -1,24 +1,403 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Cy-Bt-GO2">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="GloriaHallelujah.ttf">
+            <string>GloriaHallelujah</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Reciplease-->
+        <scene sceneID="vAP-P9-6AZ">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="tYz-lw-pb5" customClass="RecipeSearchViewController" customModule="Reciplease" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2xi-Eq-dUa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Waj-Gi-5FH">
+                                <rect key="frame" x="20" y="198" width="374" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Ingredients :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfn-eU-gl4">
+                                        <rect key="frame" x="0.0" y="0.0" width="299" height="40"/>
+                                        <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="19"/>
+                                        <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9E-fI-npw">
+                                        <rect key="frame" x="304" y="0.0" width="70" height="40"/>
+                                        <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="R9E-fI-npw" secondAttribute="height" multiplier="7:4" id="4b9-p1-Ln5"/>
+                                            <constraint firstAttribute="height" constant="40" id="e3T-nL-zeu"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="20"/>
+                                        <state key="normal" title="CLEAR"/>
+                                        <connections>
+                                            <action selector="didTapClearIngredientsButton:" destination="tYz-lw-pb5" eventType="touchUpInside" id="JRd-yM-2f9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PUG-Ww-88c">
+                                <rect key="frame" x="40" y="248" width="334" height="475"/>
+                                <color key="backgroundColor" red="0.94789146769999999" green="0.94331228190000005" blue="0.95247065360000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="separatorColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientCell" rowHeight="40" id="SYO-vG-Vx6" customClass="IngredientTableViewCell" customModule="Reciplease" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="334" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SYO-vG-Vx6" id="cOr-Mr-wlO">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="NQW-bR-8D9">
+                                                    <rect key="frame" x="20" y="10" width="30" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="RVR-oR-svx"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxK-ej-W0i">
+                                                    <rect key="frame" x="70" y="0.0" width="150" height="40"/>
+                                                    <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="18"/>
+                                                    <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="RxK-ej-W0i" secondAttribute="trailing" constant="20" id="0VE-2c-h3r"/>
+                                                <constraint firstAttribute="bottom" secondItem="RxK-ej-W0i" secondAttribute="bottom" id="1CP-qs-fSw"/>
+                                                <constraint firstItem="RxK-ej-W0i" firstAttribute="leading" secondItem="NQW-bR-8D9" secondAttribute="trailing" constant="20" id="Cd9-FO-kba"/>
+                                                <constraint firstItem="NQW-bR-8D9" firstAttribute="centerY" secondItem="cOr-Mr-wlO" secondAttribute="centerY" id="GPZ-ic-ce4"/>
+                                                <constraint firstItem="NQW-bR-8D9" firstAttribute="top" secondItem="cOr-Mr-wlO" secondAttribute="top" constant="10" id="SSh-cI-bz7"/>
+                                                <constraint firstItem="NQW-bR-8D9" firstAttribute="leading" secondItem="cOr-Mr-wlO" secondAttribute="leading" constant="20" id="kEB-Pp-lqn"/>
+                                                <constraint firstItem="RxK-ej-W0i" firstAttribute="top" secondItem="cOr-Mr-wlO" secondAttribute="top" id="kqU-XU-ZzP"/>
+                                                <constraint firstAttribute="bottom" secondItem="NQW-bR-8D9" secondAttribute="bottom" constant="10" id="kuZ-zD-b3D"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.94789146769999999" green="0.94331228190000005" blue="0.95247065360000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="RxK-ej-W0i" id="Syg-wq-BSh"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="tYz-lw-pb5" id="KTs-TK-4xj"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1S-SE-Y82">
+                                <rect key="frame" x="20" y="743" width="374" height="50"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ad0-bS-yil">
+                                        <rect key="frame" x="0.0" y="5" width="374" height="40"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChiefHat" translatesAutoresizingMaskIntoConstraints="NO" id="Jw6-5G-B4u">
+                                                <rect key="frame" x="0.0" y="0.0" width="55" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="55" id="zPz-Nm-LgJ"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEARCH FOR RECIPES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drP-c1-S91">
+                                                <rect key="frame" x="60" y="0.0" width="229" height="40"/>
+                                                <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="17"/>
+                                                <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ChiefKnife" translatesAutoresizingMaskIntoConstraints="NO" id="1Y0-sG-d8g">
+                                                <rect key="frame" x="294" y="0.0" width="80" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="80" id="bGe-nZ-Nei"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="ad0-bS-yil" firstAttribute="top" secondItem="F1S-SE-Y82" secondAttribute="top" constant="5" id="7d7-cd-iny"/>
+                                    <constraint firstAttribute="trailing" secondItem="ad0-bS-yil" secondAttribute="trailing" id="TV8-dd-2Le"/>
+                                    <constraint firstAttribute="bottom" secondItem="ad0-bS-yil" secondAttribute="bottom" constant="5" id="fzX-dt-Egr"/>
+                                    <constraint firstItem="ad0-bS-yil" firstAttribute="leading" secondItem="F1S-SE-Y82" secondAttribute="leading" id="jpM-h0-bB8"/>
+                                    <constraint firstAttribute="height" constant="50" id="ylv-yb-g4h"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o0U-tF-XEN">
+                                <rect key="frame" x="20" y="98" width="374" height="80"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fridge" translatesAutoresizingMaskIntoConstraints="NO" id="zra-hG-AqP">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="xoP-CZ-g7k"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="jMb-gi-Z7E">
+                                        <rect key="frame" x="60" y="0.0" width="314" height="80"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="X6D-Cf-QPG">
+                                                <rect key="frame" x="0.0" y="0.0" width="314" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's in my fridge ?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ar-83-2g6">
+                                                        <rect key="frame" x="0.0" y="3" width="244" height="34"/>
+                                                        <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="17"/>
+                                                        <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6QH-VK-sMC">
+                                                        <rect key="frame" x="254" y="0.0" width="60" height="40"/>
+                                                        <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="0PS-ng-eWz"/>
+                                                            <constraint firstAttribute="width" secondItem="6QH-VK-sMC" secondAttribute="height" multiplier="3:2" id="GXy-xO-0PU"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="20"/>
+                                                        <state key="normal" title="ADD"/>
+                                                        <connections>
+                                                            <action selector="didTapAddIngredientButton:" destination="tYz-lw-pb5" eventType="touchUpInside" id="WHn-6E-Ccz"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VgT-V4-GT1">
+                                                <rect key="frame" x="0.0" y="45" width="314" height="35"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="yQ7-Ud-ZaH">
+                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="35"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="30" id="AUX-qM-PI8"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Lemon, Cheese, ..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="C6p-Dx-jhS">
+                                                        <rect key="frame" x="40" y="2.5" width="274" height="30"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="30" id="oAI-pk-RkG"/>
+                                                        </constraints>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="17"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="go"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="tYz-lw-pb5" id="5LJ-pi-S8p"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="yQ7-Ud-ZaH" firstAttribute="leading" secondItem="VgT-V4-GT1" secondAttribute="leading" id="xRy-42-MZQ"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="1y6-YD-wxV"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94789146771890864" green="0.94331228188451788" blue="0.95247065355329952" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="RGz-QK-Tr4" firstAttribute="trailing" secondItem="o0U-tF-XEN" secondAttribute="trailing" constant="20" id="24x-WB-ngV"/>
+                            <constraint firstItem="F1S-SE-Y82" firstAttribute="centerX" secondItem="2xi-Eq-dUa" secondAttribute="centerX" id="4C0-dK-JSA"/>
+                            <constraint firstItem="o0U-tF-XEN" firstAttribute="top" secondItem="RGz-QK-Tr4" secondAttribute="top" constant="10" id="7je-ZH-5bd"/>
+                            <constraint firstItem="Waj-Gi-5FH" firstAttribute="top" secondItem="o0U-tF-XEN" secondAttribute="bottom" constant="20" id="BHq-lz-woT"/>
+                            <constraint firstItem="PUG-Ww-88c" firstAttribute="leading" secondItem="RGz-QK-Tr4" secondAttribute="leading" constant="40" id="Hjn-fc-Ccn"/>
+                            <constraint firstItem="PUG-Ww-88c" firstAttribute="top" secondItem="Waj-Gi-5FH" secondAttribute="bottom" constant="10" id="NyT-tm-IdM"/>
+                            <constraint firstItem="F1S-SE-Y82" firstAttribute="leading" secondItem="RGz-QK-Tr4" secondAttribute="leading" constant="20" id="elM-ao-g1w"/>
+                            <constraint firstItem="Waj-Gi-5FH" firstAttribute="leading" secondItem="RGz-QK-Tr4" secondAttribute="leading" constant="20" id="hZ7-gI-Zp0"/>
+                            <constraint firstItem="RGz-QK-Tr4" firstAttribute="bottom" secondItem="F1S-SE-Y82" secondAttribute="bottom" constant="20" id="kO6-xb-yJb"/>
+                            <constraint firstItem="RGz-QK-Tr4" firstAttribute="trailing" secondItem="Waj-Gi-5FH" secondAttribute="trailing" constant="20" id="muR-Gv-HR9"/>
+                            <constraint firstItem="F1S-SE-Y82" firstAttribute="top" secondItem="PUG-Ww-88c" secondAttribute="bottom" constant="20" id="rhE-DE-AzP"/>
+                            <constraint firstItem="o0U-tF-XEN" firstAttribute="leading" secondItem="RGz-QK-Tr4" secondAttribute="leading" constant="20" id="vDA-cb-qj2"/>
+                            <constraint firstItem="RGz-QK-Tr4" firstAttribute="trailing" secondItem="PUG-Ww-88c" secondAttribute="trailing" constant="40" id="w8o-Cp-jx0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RGz-QK-Tr4"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="uo1-MM-PAT" appends="YES" id="6LE-M9-gcL"/>
+                        </connections>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="BER-z7-GE3"/>
+                    <navigationItem key="navigationItem" title="Reciplease" id="VcG-cy-3Re">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="443-wz-CQP"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addIngredientButton" destination="6QH-VK-sMC" id="Bkg-b1-gLI"/>
+                        <outlet property="clearIngredientsButton" destination="R9E-fI-npw" id="QSr-H6-ecs"/>
+                        <outlet property="ingredientTextField" destination="C6p-Dx-jhS" id="XNn-NZ-WMZ"/>
+                        <outlet property="ingredientsTableView" destination="PUG-Ww-88c" id="4KD-xA-S2l"/>
+                        <outlet property="searchRecipesButton" destination="F1S-SE-Y82" id="Wyx-Tk-G8a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bFN-ec-1BA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="uo1-MM-PAT">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="tYz-lw-pb5" id="zhd-tr-J2S"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1631.8840579710147" y="-559.15178571428567"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="pOE-Q3-AfB">
+            <objects>
+                <tableViewController id="qrQ-Ow-hEc" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qAd-uS-wg2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="nNT-d5-ZAg">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nNT-d5-ZAg" id="Mfj-RQ-cBG">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qrQ-Ow-hEc" id="JTw-Ye-Ocs"/>
+                            <outlet property="delegate" destination="qrQ-Ow-hEc" id="mLy-3Q-ILS"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z0T-NW-ND6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2558" y="-558"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Ijg-7m-z2j">
+            <objects>
+                <viewController id="pgE-Kz-b9V" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gJz-4R-yey">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="A3k-qD-5VB"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gKr-Qd-p2n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="3457" y="-557"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="tUO-pn-8GZ">
+            <objects>
+                <navigationController id="J1W-Gl-zdx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" id="wix-fg-BUL"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jP7-hp-rSG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="22"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="tYz-lw-pb5" kind="relationship" relationship="rootViewController" id="3Gn-te-gn2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h37-b8-MvN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="684" y="-557"/>
+        </scene>
+        <!--Reciplease-->
+        <scene sceneID="C75-dE-WGG">
+            <objects>
+                <tableViewController id="sm4-yi-0z0" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="YuC-bg-Ukr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tLS-Kp-uv8">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tLS-Kp-uv8" id="pnK-S4-dPb">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="sm4-yi-0z0" id="SGI-QR-P5B"/>
+                            <outlet property="delegate" destination="sm4-yi-0z0" id="NxT-ec-qjy"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Reciplease" id="jwm-JD-e0w"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cLS-Rf-JEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1634" y="181"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="N81-Nb-yM0">
+            <objects>
+                <viewController id="hcq-oy-OPK" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BJz-je-0t8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="L5n-4N-BxT"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hSk-NA-wG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2558" y="181"/>
+        </scene>
+        <!--Favorite-->
+        <scene sceneID="JeI-Uh-w3I">
+            <objects>
+                <navigationController id="4Gy-nB-I9a" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorite" id="JgJ-D5-YGh"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4zk-Un-xMj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="22"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="sm4-yi-0z0" kind="relationship" relationship="rootViewController" id="a05-sS-cV7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iya-SW-gOc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="684" y="181"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="pmi-WC-Umi">
+            <objects>
+                <tabBarController id="8Cy-Bt-GO2" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backgroundImage="TabBarSkin" itemPositioning="fill" id="JGc-Sy-5JL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="J1W-Gl-zdx" kind="relationship" relationship="viewControllers" id="gKL-3g-pdR"/>
+                        <segue destination="4Gy-nB-I9a" kind="relationship" relationship="viewControllers" id="6nI-of-ZOE"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mlg-g6-F0e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-271" y="-234"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Arrow" width="106" height="64"/>
+        <image name="ChiefHat" width="65" height="63"/>
+        <image name="ChiefKnife" width="87" height="65"/>
+        <image name="Fridge" width="48" height="78"/>
+        <image name="TabBarSkin" width="456" height="80"/>
+    </resources>
 </document>
