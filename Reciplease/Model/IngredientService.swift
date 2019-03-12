@@ -20,4 +20,7 @@ class IngredientService {
     func clear() {
         ingredients = []
     }
+    func removeIngredient(at index: Int) {
+        ingredients.remove(at: index)
+    }
 }

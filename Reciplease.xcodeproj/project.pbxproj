@@ -10,6 +10,14 @@
 		4F14E5962236974D00A60E11 /* IngredientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14E5952236974D00A60E11 /* IngredientService.swift */; };
 		4F14E5982236983B00A60E11 /* IngredientServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14E5972236983B00A60E11 /* IngredientServiceTestCase.swift */; };
 		4F14E59A2236AEF000A60E11 /* IngredientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14E5992236AEF000A60E11 /* IngredientTableViewCell.swift */; };
+		4F14E59C223704F500A60E11 /* RecipeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14E59B223704F500A60E11 /* RecipeListTableViewController.swift */; };
+		4F14E59E22370E8A00A60E11 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14E59D22370E8A00A60E11 /* Recipe.swift */; };
+		4F14E5A02237135A00A60E11 /* RecipeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14E59F2237135A00A60E11 /* RecipeService.swift */; };
+		4F14E5A22237B40400A60E11 /* RecipeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14E5A12237B40400A60E11 /* RecipeList.swift */; };
+		4F14E5A42237B50000A60E11 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14E5A32237B50000A60E11 /* Ingredient.swift */; };
+		4F14E5A62237B55400A60E11 /* Holiday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14E5A52237B55400A60E11 /* Holiday.swift */; };
+		4F14E5A82237B5AF00A60E11 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14E5A72237B5AF00A60E11 /* Course.swift */; };
+		4F14E5AA2237B5D800A60E11 /* Cuisine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14E5A92237B5D800A60E11 /* Cuisine.swift */; };
 		4F45CE12222EF2ED004246EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F45CE11222EF2ED004246EE /* AppDelegate.swift */; };
 		4F45CE17222EF2ED004246EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F45CE15222EF2ED004246EE /* Main.storyboard */; };
 		4F45CE1A222EF2ED004246EE /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4F45CE18222EF2ED004246EE /* Reciplease.xcdatamodeld */; };
@@ -41,6 +49,14 @@
 		4F14E5952236974D00A60E11 /* IngredientService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientService.swift; sourceTree = "<group>"; };
 		4F14E5972236983B00A60E11 /* IngredientServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientServiceTestCase.swift; sourceTree = "<group>"; };
 		4F14E5992236AEF000A60E11 /* IngredientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientTableViewCell.swift; sourceTree = "<group>"; };
+		4F14E59B223704F500A60E11 /* RecipeListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListTableViewController.swift; sourceTree = "<group>"; };
+		4F14E59D22370E8A00A60E11 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		4F14E59F2237135A00A60E11 /* RecipeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeService.swift; sourceTree = "<group>"; };
+		4F14E5A12237B40400A60E11 /* RecipeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeList.swift; sourceTree = "<group>"; };
+		4F14E5A32237B50000A60E11 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		4F14E5A52237B55400A60E11 /* Holiday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Holiday.swift; sourceTree = "<group>"; };
+		4F14E5A72237B5AF00A60E11 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		4F14E5A92237B5D800A60E11 /* Cuisine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cuisine.swift; sourceTree = "<group>"; };
 		4F45CE0E222EF2ED004246EE /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F45CE11222EF2ED004246EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F45CE16222EF2ED004246EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -122,6 +138,13 @@
 			isa = PBXGroup;
 			children = (
 				4F45CE18222EF2ED004246EE /* Reciplease.xcdatamodeld */,
+				4F14E5A72237B5AF00A60E11 /* Course.swift */,
+				4F14E5A92237B5D800A60E11 /* Cuisine.swift */,
+				4F14E59D22370E8A00A60E11 /* Recipe.swift */,
+				4F14E5A32237B50000A60E11 /* Ingredient.swift */,
+				4F14E5A52237B55400A60E11 /* Holiday.swift */,
+				4F14E5A12237B40400A60E11 /* RecipeList.swift */,
+				4F14E59F2237135A00A60E11 /* RecipeService.swift */,
 				4F14E5952236974D00A60E11 /* IngredientService.swift */,
 			);
 			path = Model;
@@ -140,6 +163,7 @@
 		4F45CE37222EF3BD004246EE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4F14E59B223704F500A60E11 /* RecipeListTableViewController.swift */,
 				4F45CE4922332965004246EE /* RecipeSearchViewController.swift */,
 			);
 			path = Controller;
@@ -371,12 +395,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F14E5A82237B5AF00A60E11 /* Course.swift in Sources */,
 				4F45CE4A22332965004246EE /* RecipeSearchViewController.swift in Sources */,
 				4F45CE1A222EF2ED004246EE /* Reciplease.xcdatamodeld in Sources */,
 				4F14E59A2236AEF000A60E11 /* IngredientTableViewCell.swift in Sources */,
 				4F45CE42223066BA004246EE /* ServicesKey.swift in Sources */,
+				4F14E5A02237135A00A60E11 /* RecipeService.swift in Sources */,
+				4F14E59C223704F500A60E11 /* RecipeListTableViewController.swift in Sources */,
+				4F14E5A62237B55400A60E11 /* Holiday.swift in Sources */,
 				4F14E5962236974D00A60E11 /* IngredientService.swift in Sources */,
+				4F14E5A22237B40400A60E11 /* RecipeList.swift in Sources */,
+				4F14E5AA2237B5D800A60E11 /* Cuisine.swift in Sources */,
 				4F45CE12222EF2ED004246EE /* AppDelegate.swift in Sources */,
+				4F14E59E22370E8A00A60E11 /* Recipe.swift in Sources */,
+				4F14E5A42237B50000A60E11 /* Ingredient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

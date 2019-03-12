@@ -13,6 +13,12 @@ class RecipeSearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDesignButtons()
+
+        // Gesture recognizer for search recipe
+        let searchRecipeGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(searchRecipe))
+        searchRecipeGestureRecognizer.numberOfTapsRequired = 1
+        searchRecipeGestureRecognizer.numberOfTouchesRequired = 1
+        self.view.addGestureRecognizer(searchRecipeGestureRecognizer)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +62,10 @@ class RecipeSearchViewController: UIViewController {
         clearIngredientsButton.layer.shadowColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
     }
 
+    @objc func searchRecipe() {
+        performSegue(withIdentifier: "recipeListSegue", sender: nil)
+    }
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -78,7 +88,7 @@ extension RecipeSearchViewController: UITextFieldDelegate {
 }
 
 // MARK: - TABLEVIEW
-extension RecipeSearchViewController: UITableViewDataSource {
+extension RecipeSearchViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -96,5 +106,13 @@ extension RecipeSearchViewController: UITableViewDataSource {
         cell.configure(withTitle: ingredient)
 
         return cell
+    }
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            IngredientService.shared.removeIngredient(at: indexPath.row)
+            ingredientsTableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 }
