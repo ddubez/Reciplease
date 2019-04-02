@@ -10,6 +10,15 @@ import UIKit
 
 class RecipeListTableViewController: UITableViewController {
 
+    // TODO: passer en singleton
+    // TODO: format des cell
+    // TODO: charger image
+    
+    // MARK: - PROPERTIES
+    var recipeList: RecipeList!
+
+    // MARK: - METHODS
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,24 +32,27 @@ class RecipeListTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        guard let recipeListMatches = recipeList.matches else {
+            return 0
+        }
+        return recipeListMatches.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
+        guard let recipeListMatches = recipeList.matches else {
+            return cell
+        }
+        let recipe = recipeListMatches[indexPath.row]
+        cell.textLabel?.text = recipe.recipeName
+        cell.detailTextLabel?.text = recipe.referenceId
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

@@ -13,14 +13,22 @@ class IngredientService {
     private init() {}
 
     private(set) var ingredients: [String] = []
+    private(set) var searchList: String = ""
 
     func add(ingredient: String) {
         ingredients.append(ingredient)
     }
     func clear() {
         ingredients = []
+        searchList = ""
     }
     func removeIngredient(at index: Int) {
         ingredients.remove(at: index)
+    }
+
+    func setSearchList() {
+        for ingredient in ingredients {
+            searchList += "+" + ingredient
+        }
     }
 }

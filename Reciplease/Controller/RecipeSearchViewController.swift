@@ -18,13 +18,16 @@ class RecipeSearchViewController: UIViewController {
         let searchRecipeGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(searchRecipe))
         searchRecipeGestureRecognizer.numberOfTapsRequired = 1
         searchRecipeGestureRecognizer.numberOfTouchesRequired = 1
-        self.view.addGestureRecognizer(searchRecipeGestureRecognizer)
+        searchRecipesButton.addGestureRecognizer(searchRecipeGestureRecognizer)
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ingredientsTableView.reloadData()
     }
+    // MARK: - PROPERTIES
+    var resultRecipeList = RecipeList()
 
     // MARK: - IBOUTLETS
     @IBOutlet weak var ingredientTextField: UITextField!
@@ -32,6 +35,7 @@ class RecipeSearchViewController: UIViewController {
     @IBOutlet weak var clearIngredientsButton: UIButton!
     @IBOutlet weak var ingredientsTableView: UITableView!
     @IBOutlet weak var searchRecipesButton: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     // MARK: - IBACTIONS
     @IBAction func didTapAddIngredientButton(_ sender: UIButton) {
@@ -63,15 +67,35 @@ class RecipeSearchViewController: UIViewController {
     }
 
     @objc func searchRecipe() {
-        performSegue(withIdentifier: "recipeListSegue", sender: nil)
+        toggleActivityIndicator(working: true)
+        IngredientService.shared.setSearchList()
+        
+        RecipeService.shared.getListRecipe(searchPhrase: IngredientService.shared.searchList) { (success, recipeList, error) in
+
+            self.toggleActivityIndicator(working: false)
+
+            if success == true, let recipeList = recipeList {
+                self.resultRecipeList = recipeList
+                self.performSegue(withIdentifier: "segueToRecipeList", sender: nil)
+            } else {
+                self.displayAlert(with: error)
+            }
+        }
+    }
+
+    private func toggleActivityIndicator(working: Bool) {
+        searchRecipesButton.isHidden = working
+        activityIndicator.isHidden = !working
     }
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "segueToRecipeList" {
+            if let recipeListTableVC = segue.destination as? RecipeListTableViewController {
+            recipeListTableVC.recipeList = resultRecipeList
+            }
+        }
     }
 }
 
@@ -116,3 +140,14 @@ extension RecipeSearchViewController: UITableViewDataSource, UITableViewDelegate
         }
     }
 }
+
+// MARK: - Alert
+extension RecipeSearchViewController {
+    func displayAlert(with message: String) {
+        let alert = UIAlertController(title: "Error!", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
+// TODO: message alerte pas de resultat
