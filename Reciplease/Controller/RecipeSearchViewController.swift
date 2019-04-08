@@ -69,7 +69,7 @@ class RecipeSearchViewController: UIViewController {
     @objc func searchRecipe() {
         toggleActivityIndicator(working: true)
         IngredientService.shared.setSearchList()
-        
+
         RecipeService.shared.getListRecipe(searchPhrase: IngredientService.shared.searchList) { (success, recipeList, error) in
 
             self.toggleActivityIndicator(working: false)
@@ -121,7 +121,7 @@ extension RecipeSearchViewController: UITableViewDataSource, UITableViewDelegate
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientCell",
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientTableViewCell",
                                                        for: indexPath) as? IngredientTableViewCell else {
             return UITableViewCell()
         }

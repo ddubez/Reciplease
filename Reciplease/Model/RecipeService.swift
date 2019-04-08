@@ -27,9 +27,9 @@ class RecipeService {
 //        "_app_id": ServicesKey.yummlyApiId,
 //        "q": "onion+egg+butter+milk"
 //        ]
-    
+
     // TODO: gestion parameters??
-    
+
     // MARK: - FUNCTIONS
 
     func getListRecipe(searchPhrase: String,

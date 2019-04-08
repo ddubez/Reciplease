@@ -10,12 +10,18 @@ import UIKit
 
 class RecipeListTableViewController: UITableViewController {
 
-    // TODO: passer en singleton
     // TODO: format des cell
     // TODO: charger image
-    
+
     // MARK: - PROPERTIES
     var recipeList: RecipeList!
+
+    var recipeListMatches: [RecipeList.Matche] {
+        guard let recipeListMatches = recipeList.matches else {
+            return []
+        }
+        return recipeListMatches
+    }
 
     // MARK: - METHODS
 
@@ -36,22 +42,20 @@ class RecipeListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let recipeListMatches = recipeList.matches else {
-            return 0
-        }
         return recipeListMatches.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeCell", for: indexPath)
-        guard let recipeListMatches = recipeList.matches else {
-            return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeListTableViewCell",
+                                                       for: indexPath) as? RecipeListTableViewCell else {
+                                                        return UITableViewCell()
         }
+
         let recipe = recipeListMatches[indexPath.row]
-        cell.textLabel?.text = recipe.recipeName
-        cell.detailTextLabel?.text = recipe.referenceId
+        cell.configure(withRecipeName: recipe.recipeName, ingredients: recipe.ingredients, prepTime: recipe.totalTimeInSeconds, rating: recipe.rating)
 
         return cell
+
     }
 
     /*
