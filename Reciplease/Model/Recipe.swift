@@ -10,5 +10,11 @@ import Foundation
 import CoreData
 
 class Recipe: NSManagedObject {
+// creation of structure like JSON model response
+
+}
+
+struct RecipeStruct: Codable {
+    var attribution: String
 
 }

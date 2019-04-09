@@ -14,14 +14,7 @@ class RecipeListTableViewController: UITableViewController {
     // TODO: charger image
 
     // MARK: - PROPERTIES
-    var recipeList: RecipeList!
-
-    var recipeListMatches: [RecipeList.Matche] {
-        guard let recipeListMatches = recipeList.matches else {
-            return []
-        }
-        return recipeListMatches
-    }
+    var recipeListMatches: [RecipeList.Matche]!
 
     // MARK: - METHODS
 
@@ -52,10 +45,18 @@ class RecipeListTableViewController: UITableViewController {
         }
 
         let recipe = recipeListMatches[indexPath.row]
-        cell.configure(withRecipeName: recipe.recipeName, ingredients: recipe.ingredients, prepTime: recipe.totalTimeInSeconds, rating: recipe.rating)
+        cell.configure(withRecipeName: recipe.recipeName,
+                       ingredients: recipe.ingredients,
+                       prepTime: recipe.totalTimeInSeconds,
+                       rating: recipe.rating,
+                       image: recipe.listImage)
 
         return cell
 
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "segueToRecipeDetail", sender: nil)
+        print(indexPath)
     }
 
     /*

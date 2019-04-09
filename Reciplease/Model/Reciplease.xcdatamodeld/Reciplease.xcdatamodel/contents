@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Course" representedClassName=".Course" syncable="YES" codeGenerationType="category">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recipe" inverseName="courses" inverseEntity="Recipe" syncable="YES"/>
@@ -36,10 +36,10 @@
         <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="recipes" inverseEntity="Ingredient" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Recipe" positionX="-311.26953125" positionY="-31.6484375" width="128" height="298"/>
-        <element name="Ingredient" positionX="36.1640625" positionY="312.11328125" width="128" height="73"/>
         <element name="Course" positionX="4.6484375" positionY="-7.8828125" width="128" height="73"/>
         <element name="Cuisine" positionX="38.4453125" positionY="85.09765625" width="128" height="73"/>
         <element name="Holiday" positionX="63.234375" positionY="194.87890625" width="128" height="73"/>
+        <element name="Ingredient" positionX="36.1640625" positionY="312.11328125" width="128" height="73"/>
+        <element name="Recipe" positionX="-311.26953125" positionY="-31.6484375" width="128" height="298"/>
     </elements>
 </model>

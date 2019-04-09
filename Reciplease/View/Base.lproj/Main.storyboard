@@ -66,7 +66,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxK-ej-W0i">
-                                                    <rect key="frame" x="70" y="0.0" width="205" height="40"/>
+                                                    <rect key="frame" x="70" y="0.0" width="244" height="40"/>
                                                     <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="18"/>
                                                     <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -265,110 +265,122 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94789146769999999" green="0.94331228190000005" blue="0.95247065360000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeListTableViewCell" rowHeight="100" id="nNT-d5-ZAg" customClass="RecipeListTableViewCell" customModule="Reciplease" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecipeListTableViewCell" rowHeight="90" id="nNT-d5-ZAg" customClass="RecipeListTableViewCell" customModule="Reciplease" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nNT-d5-ZAg" id="Mfj-RQ-cBG">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.666666666666671"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nNT-d5-ZAg" id="Mfj-RQ-cBG">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recipeName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ND-sJ-z64">
-                                            <rect key="frame" x="101.66666666666666" y="0.0" width="268.33333333333337" height="27"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="27" id="d7O-HV-pCI"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="20"/>
-                                            <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="Keo-uX-zBX">
-                                            <rect key="frame" x="0.0" y="0.0" width="99.666666666666671" height="99.6666666666667"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="Keo-uX-zBX" secondAttribute="height" multiplier="1:1" id="Buu-jf-BXQ"/>
-                                            </constraints>
-                                        </imageView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nameLine" translatesAutoresizingMaskIntoConstraints="NO" id="8rk-lg-Lj8">
-                                            <rect key="frame" x="99.666666666666657" y="27" width="270.33333333333337" height="10"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="10" id="HfQ-Gu-v3U"/>
-                                            </constraints>
-                                        </imageView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0xX-A8-wWC">
-                                            <rect key="frame" x="5" y="5" width="89.666666666666671" height="89.666666666666671"/>
-                                        </imageView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNT-Ab-07H">
-                                            <rect key="frame" x="101.66666666666666" y="37" width="263.33333333333337" height="60"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qD-H0-Nwg">
+                                            <rect key="frame" x="5" y="5" width="365" height="79.666666666666671"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ingredients" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oMj-Wq-tsO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="183.33333333333334" height="60"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoBorder" translatesAutoresizingMaskIntoConstraints="NO" id="Keo-uX-zBX">
+                                                    <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="79.666666666666671"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="TZm-z2-Pow"/>
+                                                        <constraint firstAttribute="width" secondItem="Keo-uX-zBX" secondAttribute="height" multiplier="1:1" id="yug-8p-5bM"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="12"/>
-                                                    <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dxI-l7-voI">
-                                                    <rect key="frame" x="183.33333333333331" y="0.0" width="80" height="60"/>
+                                                </imageView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0xX-A8-wWC">
+                                                    <rect key="frame" x="5" y="5" width="70" height="70"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="70" id="4ij-pZ-Tkp"/>
+                                                        <constraint firstAttribute="width" constant="70" id="afv-CR-IlM"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="kMW-IU-fQu">
+                                                    <rect key="frame" x="85" y="0.0" width="270" height="79.666666666666671"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jmM-6q-ABL">
-                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="26"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recipeName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ND-sJ-z64">
+                                                            <rect key="frame" x="0.0" y="0.0" width="270" height="27"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="27" id="d7O-HV-pCI"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="20"/>
+                                                            <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nameLine" translatesAutoresizingMaskIntoConstraints="NO" id="8rk-lg-Lj8">
+                                                            <rect key="frame" x="0.0" y="29" width="270" height="10"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="10" id="77c-Hx-PXA"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="TNT-Ab-07H">
+                                                            <rect key="frame" x="0.0" y="41" width="270" height="38.666666666666657"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hourGlass" translatesAutoresizingMaskIntoConstraints="NO" id="dtO-Ua-Sw3">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="26"/>
-                                                                </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 min" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="df9-Qz-mMN">
-                                                                    <rect key="frame" x="40" y="1" width="40" height="24"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ingredients" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oMj-Wq-tsO">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="134" height="38.666666666666664"/>
                                                                     <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="12"/>
                                                                     <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                            </subviews>
-                                                        </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="x8x-cc-bog">
-                                                            <rect key="frame" x="0.0" y="36" width="80" height="24"/>
-                                                            <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="erh-cD-Jle">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="24"/>
-                                                                </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6Ui-hQ-SQe">
-                                                                    <rect key="frame" x="40" y="0.0" width="40" height="24"/>
-                                                                    <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="12"/>
-                                                                    <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dxI-l7-voI">
+                                                                    <rect key="frame" x="190" y="0.0" width="80" height="38.666666666666664"/>
+                                                                    <subviews>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jmM-6q-ABL">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="17"/>
+                                                                            <subviews>
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hourGlass" translatesAutoresizingMaskIntoConstraints="NO" id="dtO-Ua-Sw3">
+                                                                                    <rect key="frame" x="0.0" y="0.3333333333333357" width="40" height="16"/>
+                                                                                </imageView>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 min" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="df9-Qz-mMN">
+                                                                                    <rect key="frame" x="40" y="1.3333333333333357" width="40" height="14"/>
+                                                                                    <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="12"/>
+                                                                                    <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                            </subviews>
+                                                                        </stackView>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="x8x-cc-bog">
+                                                                            <rect key="frame" x="0.0" y="22" width="80" height="16.666666666666671"/>
+                                                                            <subviews>
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="erh-cD-Jle">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="16.666666666666668"/>
+                                                                                </imageView>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6Ui-hQ-SQe">
+                                                                                    <rect key="frame" x="40" y="0.0" width="40" height="16.666666666666668"/>
+                                                                                    <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="12"/>
+                                                                                    <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                            </subviews>
+                                                                        </stackView>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="80" id="m8h-Ly-bEW"/>
+                                                                    </constraints>
+                                                                </stackView>
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="jmK-jq-fom"/>
-                                                    </constraints>
                                                 </stackView>
                                             </subviews>
-                                        </stackView>
+                                            <color key="backgroundColor" red="0.94789146769999999" green="0.94331228190000005" blue="0.95247065360000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstItem="0xX-A8-wWC" firstAttribute="centerX" secondItem="Keo-uX-zBX" secondAttribute="centerX" id="1tN-hR-YZg"/>
+                                                <constraint firstItem="kMW-IU-fQu" firstAttribute="top" secondItem="4qD-H0-Nwg" secondAttribute="top" id="9oY-XM-dUP"/>
+                                                <constraint firstItem="kMW-IU-fQu" firstAttribute="leading" secondItem="4qD-H0-Nwg" secondAttribute="leading" constant="85" id="JxQ-v2-btV"/>
+                                                <constraint firstItem="0xX-A8-wWC" firstAttribute="centerY" secondItem="Keo-uX-zBX" secondAttribute="centerY" id="S1G-6y-pca"/>
+                                                <constraint firstItem="Keo-uX-zBX" firstAttribute="top" secondItem="4qD-H0-Nwg" secondAttribute="top" id="ShQ-n3-4oN"/>
+                                                <constraint firstAttribute="height" constant="79.670000000000002" id="UhL-yA-E01"/>
+                                                <constraint firstItem="Keo-uX-zBX" firstAttribute="leading" secondItem="4qD-H0-Nwg" secondAttribute="leading" id="YVX-8K-wfN"/>
+                                                <constraint firstAttribute="bottom" secondItem="kMW-IU-fQu" secondAttribute="bottom" id="e84-3G-Sjo"/>
+                                                <constraint firstAttribute="bottom" secondItem="Keo-uX-zBX" secondAttribute="bottom" id="fjf-lN-zDN"/>
+                                                <constraint firstAttribute="trailing" secondItem="kMW-IU-fQu" secondAttribute="trailing" constant="10" id="xFl-sV-Qwm"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="TNT-Ab-07H" secondAttribute="trailing" constant="10" id="6H6-kI-Bia"/>
-                                        <constraint firstItem="0xX-A8-wWC" firstAttribute="trailing" secondItem="Keo-uX-zBX" secondAttribute="trailing" constant="-5" id="7fz-Um-Cew"/>
-                                        <constraint firstAttribute="bottom" secondItem="Keo-uX-zBX" secondAttribute="bottom" id="BRN-EP-kSJ"/>
-                                        <constraint firstItem="TNT-Ab-07H" firstAttribute="top" secondItem="8rk-lg-Lj8" secondAttribute="bottom" id="H1y-Vb-SLo"/>
-                                        <constraint firstAttribute="trailing" secondItem="7ND-sJ-z64" secondAttribute="trailing" constant="5" id="Nhd-hm-Pso"/>
-                                        <constraint firstItem="TNT-Ab-07H" firstAttribute="leading" secondItem="Keo-uX-zBX" secondAttribute="trailing" constant="2" id="Nk8-aG-RJ9"/>
-                                        <constraint firstItem="7ND-sJ-z64" firstAttribute="leading" secondItem="Keo-uX-zBX" secondAttribute="trailing" constant="2" id="Nuk-co-Qny"/>
-                                        <constraint firstItem="7ND-sJ-z64" firstAttribute="top" secondItem="Mfj-RQ-cBG" secondAttribute="top" id="Om5-HR-bLq"/>
-                                        <constraint firstItem="Keo-uX-zBX" firstAttribute="leading" secondItem="Mfj-RQ-cBG" secondAttribute="leading" id="REv-5L-szn"/>
-                                        <constraint firstItem="Keo-uX-zBX" firstAttribute="top" secondItem="Mfj-RQ-cBG" secondAttribute="top" id="TMK-3t-H4w"/>
-                                        <constraint firstItem="8rk-lg-Lj8" firstAttribute="top" secondItem="7ND-sJ-z64" secondAttribute="bottom" id="bu4-sO-3Cj"/>
-                                        <constraint firstAttribute="trailing" secondItem="8rk-lg-Lj8" secondAttribute="trailing" constant="5" id="gSa-QD-pwm"/>
-                                        <constraint firstItem="0xX-A8-wWC" firstAttribute="centerX" secondItem="Keo-uX-zBX" secondAttribute="centerX" id="guR-af-XF5"/>
-                                        <constraint firstItem="0xX-A8-wWC" firstAttribute="bottom" secondItem="Keo-uX-zBX" secondAttribute="bottom" constant="-5" id="pCE-e5-UC0"/>
-                                        <constraint firstItem="0xX-A8-wWC" firstAttribute="centerY" secondItem="Keo-uX-zBX" secondAttribute="centerY" id="w6n-KA-MKe"/>
-                                        <constraint firstItem="TNT-Ab-07H" firstAttribute="bottom" secondItem="Mfj-RQ-cBG" secondAttribute="bottomMargin" constant="8" id="yH0-jn-7NQ"/>
-                                        <constraint firstItem="8rk-lg-Lj8" firstAttribute="leading" secondItem="Keo-uX-zBX" secondAttribute="trailing" id="yZD-Me-pC3"/>
+                                        <constraint firstItem="4qD-H0-Nwg" firstAttribute="leading" secondItem="Mfj-RQ-cBG" secondAttribute="leading" constant="5" id="Bsq-JW-1ks"/>
+                                        <constraint firstAttribute="bottom" secondItem="4qD-H0-Nwg" secondAttribute="bottom" constant="5" id="DaO-zY-RyA"/>
+                                        <constraint firstItem="4qD-H0-Nwg" firstAttribute="top" secondItem="Mfj-RQ-cBG" secondAttribute="top" constant="5" id="VBh-5m-NkE"/>
+                                        <constraint firstAttribute="trailing" secondItem="4qD-H0-Nwg" secondAttribute="trailing" constant="5" id="l4k-zg-OZV"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.94789146769999999" green="0.94331228190000005" blue="0.95247065360000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
+                                    <outlet property="blocView" destination="4qD-H0-Nwg" id="key-jI-LVa"/>
                                     <outlet property="ingredientsLabel" destination="oMj-Wq-tsO" id="mLv-Rs-2Vg"/>
                                     <outlet property="photoBorder" destination="Keo-uX-zBX" id="vIG-e0-jgW"/>
                                     <outlet property="prepTimeLabel" destination="df9-Qz-mMN" id="qtj-HG-GEZ"/>
@@ -384,7 +396,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="pgE-Kz-b9V" kind="show" identifier="recipeSegue" id="L0V-g9-hHw"/>
+                        <segue destination="pgE-Kz-b9V" kind="show" identifier="segueToRecipeDetail" id="L0V-g9-hHw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z0T-NW-ND6" userLabel="First Responder" sceneMemberID="firstResponder"/>

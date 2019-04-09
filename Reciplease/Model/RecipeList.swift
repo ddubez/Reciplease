@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
-struct RecipeList: Decodable {
+struct RecipeList: Codable {
     // creation of structure like JSON model response
 
     var matches: [Matche]?
 
-    struct Matche: Decodable {
+    struct Matche: Codable {
         var sourceDisplayName: String?
         var imagesUrlsBySize: [ImageUrlsBySize]?
         var ingredients: [String]
@@ -24,16 +25,17 @@ struct RecipeList: Decodable {
         var attributes: Attribute?
         var flavors: Flavor?
         var rating: Int?
+        var listImage: UIImage?
     }
-    struct ImageUrlsBySize: Decodable {
+    struct ImageUrlsBySize: Codable {
         var ninety: String
     }
-    struct Attribute: Decodable {
+    struct Attribute: Codable {
         var course: [String]?
         var cuisine: [String]?
         var holiday: [String]?
     }
-    struct Flavor: Decodable {
+    struct Flavor: Codable {
         var salty: Double?
         var sour: Double?
         var sweet: Double?
