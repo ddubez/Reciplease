@@ -10,16 +10,23 @@ import UIKit
 
 class RecipeListTableViewController: UITableViewController {
 
-    // TODO: format des cell
-    // TODO: charger image
-
     // MARK: - PROPERTIES
     var recipeListMatches: [RecipeList.Matche]!
+    var numberOfResult = 0
+    var selectedRecipeId = ""
+    let offSetForLoadingData = CGFloat(100)
+    var isLoadingMore = false
+
+    // MARK: - IBOUTLETS
+    @IBOutlet weak var totalMatchesLabel: UILabel!
+    @IBOutlet weak var footerRecipeListTableView: UIView!
 
     // MARK: - METHODS
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        totalMatchesLabel.text = "\(numberOfResult)"
+        footerRecipeListTableView.isHidden = true
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -54,9 +61,47 @@ class RecipeListTableViewController: UITableViewController {
         return cell
 
     }
+
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // Load more recipe when user reach the bottom of the list
+        let maxOffSet = (scrollView.contentSize.height - scrollView.frame.size.height)
+        if !isLoadingMore
+            && scrollView.contentOffset.y >= 0
+            && scrollView.contentOffset.y + offSetForLoadingData >=  maxOffSet {
+
+            self.isLoadingMore = true
+            print("super je recharge la vue")
+            footerRecipeListTableView.isHidden = false
+        }
+        // TODO: verifier si le nombre de réponses est atteins
+        
+        
+//        if !isLoadingMore && (Int(maximumOffset - contentOffset) <= offSetForLoadingData) {
+//            // Get more data - API call
+//    //        self.isLoadingMore = true
+//            print("reload data")
+//
+//            // Update UI
+////            dispatch_async(dispatch_get_main_queue()) {
+////                tableView.reloadData()
+////                self.isLoadingMore = false
+////            }
+//        }
+    }
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "segueToRecipeDetail", sender: nil)
-        print(indexPath)
+        selectedRecipeId = recipeListMatches[indexPath.row].referenceId
+        self.performSegue(withIdentifier: "segueToRecipe", sender: nil)
+    }
+
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToRecipe" {
+            if let recipeVC = segue.destination as? RecipeViewController {
+                recipeVC.recipeId = selectedRecipeId
+            }
+        }
     }
 
     /*
@@ -95,15 +140,6 @@ class RecipeListTableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+// TODO: ajouter titre dans la navigation bar
+// TODO: format spérateur milier pour nombre recherches

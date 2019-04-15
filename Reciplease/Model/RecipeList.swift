@@ -12,6 +12,7 @@ import UIKit
 struct RecipeList: Codable {
     // creation of structure like JSON model response
 
+    var totalMatchCount: Int?
     var matches: [Matche]?
 
     struct Matche: Codable {

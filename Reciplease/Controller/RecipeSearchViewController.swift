@@ -28,6 +28,7 @@ class RecipeSearchViewController: UIViewController {
     }
     // MARK: - PROPERTIES
     var resultRecipeList = [RecipeList.Matche]()
+    var numberOfResult = 0
 
     // MARK: - IBOUTLETS
     @IBOutlet weak var ingredientTextField: UITextField!
@@ -70,13 +71,14 @@ class RecipeSearchViewController: UIViewController {
         toggleActivityIndicator(working: true)
         IngredientService.shared.setSearchList()
 
-        RecipeService.shared.getListRecipe(searchPhrase:
-            IngredientService.shared.searchList) {(success, recipeListMatches, error) in
+        RecipeListService.shared.getRecipeList(searchPhrase:
+            IngredientService.shared.searchList, start: 0) {(success, recipeListMatches, numberOfResult, error) in
 
             self.toggleActivityIndicator(working: false)
 
-            if success == true, let recipeListMatches = recipeListMatches {
+            if success == true, let recipeListMatches = recipeListMatches, let numberOfResult = numberOfResult {
                 self.resultRecipeList = recipeListMatches
+                self.numberOfResult = numberOfResult
                 self.performSegue(withIdentifier: "segueToRecipeList", sender: nil)
             } else {
                 self.displayAlert(with: error)
@@ -95,6 +97,7 @@ class RecipeSearchViewController: UIViewController {
         if segue.identifier == "segueToRecipeList" {
             if let recipeListTableVC = segue.destination as? RecipeListTableViewController {
             recipeListTableVC.recipeListMatches = resultRecipeList
+            recipeListTableVC.numberOfResult = numberOfResult
             }
         }
     }

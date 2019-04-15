@@ -18,6 +18,9 @@
 		4F14E5A62237B55400A60E11 /* Holiday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14E5A52237B55400A60E11 /* Holiday.swift */; };
 		4F14E5A82237B5AF00A60E11 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14E5A72237B5AF00A60E11 /* Course.swift */; };
 		4F14E5AA2237B5D800A60E11 /* Cuisine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F14E5A92237B5D800A60E11 /* Cuisine.swift */; };
+		4F2F0C19225FE92A0045C391 /* CodingUserInfoKey+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F0C18225FE92A0045C391 /* CodingUserInfoKey+Extension.swift */; };
+		4F2F0C1B2261D4280045C391 /* RecipeListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F0C1A2261D4280045C391 /* RecipeListService.swift */; };
+		4F2F0C1D2261DBC50045C391 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F0C1C2261DBC50045C391 /* RecipeViewController.swift */; };
 		4F45CE12222EF2ED004246EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F45CE11222EF2ED004246EE /* AppDelegate.swift */; };
 		4F45CE17222EF2ED004246EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F45CE15222EF2ED004246EE /* Main.storyboard */; };
 		4F45CE1A222EF2ED004246EE /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4F45CE18222EF2ED004246EE /* Reciplease.xcdatamodeld */; };
@@ -59,6 +62,9 @@
 		4F14E5A52237B55400A60E11 /* Holiday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Holiday.swift; sourceTree = "<group>"; };
 		4F14E5A72237B5AF00A60E11 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		4F14E5A92237B5D800A60E11 /* Cuisine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cuisine.swift; sourceTree = "<group>"; };
+		4F2F0C18225FE92A0045C391 /* CodingUserInfoKey+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodingUserInfoKey+Extension.swift"; sourceTree = "<group>"; };
+		4F2F0C1A2261D4280045C391 /* RecipeListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListService.swift; sourceTree = "<group>"; };
+		4F2F0C1C2261DBC50045C391 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		4F45CE0E222EF2ED004246EE /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F45CE11222EF2ED004246EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F45CE16222EF2ED004246EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -148,6 +154,8 @@
 				4F14E5A32237B50000A60E11 /* Ingredient.swift */,
 				4F14E5A52237B55400A60E11 /* Holiday.swift */,
 				4F14E5A12237B40400A60E11 /* RecipeList.swift */,
+				4F2F0C18225FE92A0045C391 /* CodingUserInfoKey+Extension.swift */,
+				4F2F0C1A2261D4280045C391 /* RecipeListService.swift */,
 				4F14E59F2237135A00A60E11 /* RecipeService.swift */,
 				4F87EB79225C87E300B6D516 /* RecipeImageService.swift */,
 				4F14E5952236974D00A60E11 /* IngredientService.swift */,
@@ -170,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				4F14E59B223704F500A60E11 /* RecipeListTableViewController.swift */,
+				4F2F0C1C2261DBC50045C391 /* RecipeViewController.swift */,
 				4F45CE4922332965004246EE /* RecipeSearchViewController.swift */,
 			);
 			path = Controller;
@@ -263,9 +272,11 @@
 				TargetAttributes = {
 					4F45CE0D222EF2ED004246EE = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					4F45CE24222EF2F0004246EE = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 4F45CE0D222EF2ED004246EE;
 					};
 				};
@@ -424,17 +435,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F2F0C1D2261DBC50045C391 /* RecipeViewController.swift in Sources */,
 				4F14E5A82237B5AF00A60E11 /* Course.swift in Sources */,
 				4F45CE4A22332965004246EE /* RecipeSearchViewController.swift in Sources */,
 				4F45CE1A222EF2ED004246EE /* Reciplease.xcdatamodeld in Sources */,
 				4F14E59A2236AEF000A60E11 /* IngredientTableViewCell.swift in Sources */,
 				4F45CE42223066BA004246EE /* ServicesKey.swift in Sources */,
+				4F2F0C1B2261D4280045C391 /* RecipeListService.swift in Sources */,
 				4F14E5A02237135A00A60E11 /* RecipeService.swift in Sources */,
 				4F87EB782258D7CD00B6D516 /* RecipeListTableViewCell.swift in Sources */,
 				4F14E59C223704F500A60E11 /* RecipeListTableViewController.swift in Sources */,
 				4F14E5A62237B55400A60E11 /* Holiday.swift in Sources */,
 				4F14E5962236974D00A60E11 /* IngredientService.swift in Sources */,
 				4F14E5A22237B40400A60E11 /* RecipeList.swift in Sources */,
+				4F2F0C19225FE92A0045C391 /* CodingUserInfoKey+Extension.swift in Sources */,
 				4F14E5AA2237B5D800A60E11 /* Cuisine.swift in Sources */,
 				4F45CE12222EF2ED004246EE /* AppDelegate.swift in Sources */,
 				4F14E59E22370E8A00A60E11 /* Recipe.swift in Sources */,
@@ -611,7 +625,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fr.daviddubez.Reciplease;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -630,7 +644,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fr.daviddubez.Reciplease;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -651,7 +665,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fr.daviddubez.RecipleaseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reciplease.app/Reciplease";
 			};
@@ -673,7 +687,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fr.daviddubez.RecipleaseTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Reciplease.app/Reciplease";
 			};

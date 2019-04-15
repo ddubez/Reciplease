@@ -13,7 +13,6 @@ class RecipeService {
     // network request for retrieve recipe data in Recipe Class
 
     // MARK: - PROPERTIES
-    private static let searchRecipeBaseUrlString = "https://api.yummly.com/v1/api/recipes"
     private static let getRecipeBaseUrlString = "https://api.yummly.com/v1/api/recipe/"
 
     private var session = URLSession(configuration: .default)
@@ -30,73 +29,32 @@ class RecipeService {
 
     // MARK: - FUNCTIONS
 
-    func getListRecipe(searchPhrase: String,
-                       callBack: @escaping (Bool, [RecipeList.Matche]?, String) -> Void) {
-
-        RecipeService.recipeUrlParameters.updateValue(searchPhrase, forKey: "q")
-
-        AF.request(RecipeService.searchRecipeBaseUrlString,
-                   parameters: RecipeService.recipeUrlParameters ).responseJSON { (response) in
-                        guard let json = response.data else {
-                        callBack(false, nil, "error in JSON")
-                        return
-                    }
-                    guard let responseJSON = try? JSONDecoder().decode(RecipeList.self, from: json) else {
-                        callBack(false, nil, "error in JSONDecoder")
-                        return
-                    }
-                    // TODO: Meilleurs solution pour parser ?
-                    let recipeList = responseJSON
-
-                    let getIconImagesGroup = DispatchGroup()
-
-                    guard var recipeListMatches = recipeList.matches else {
-                        callBack(false, nil, "error no matche")
-                        return
-                    }
-
-                    for index in 0...(recipeListMatches.count - 1) {
-                        getIconImagesGroup.enter()
-
-                        guard let smallImageUrls = recipeListMatches[index].smallImageUrls else {
-                            recipeListMatches[index].listImage = UIImage(named: "noPhoto")
-                            getIconImagesGroup.leave()
-                            return
-                        }
-                        let recipeImageService = RecipeImageService()
-                        recipeImageService.getIconImage(imageUrl: smallImageUrls[0], completionHandler: { (data) in
-                            guard let data = data else {
-                                recipeListMatches[index].listImage = UIImage(named: "noPhoto")
-                                getIconImagesGroup.leave()
-                                return
-                            }
-                            recipeListMatches[index].listImage = UIImage(data: data)
-                            getIconImagesGroup.leave()
-                        })
-                    }
-
-                    getIconImagesGroup.notify(queue: .main) {
-                        callBack(true, recipeListMatches, "")
-                    }
-        }
-    }
-
-    func getRecipe(recipeId: String, callBack: @escaping (Bool, RecipeStruct?, String) -> Void) {
+    func getRecipe(recipeId: String, callBack: @escaping (Bool, Recipe?, String) -> Void) {
         let getRecipeUrlString = RecipeService.getRecipeBaseUrlString + recipeId
 
-        AF.request(getRecipeUrlString).responseJSON { (response) in
-                    guard let json = response.data else {
-                        callBack(false, nil, "error in JSON")
-                        return
-                    }
-                    guard let responseJSON = try? JSONDecoder().decode(RecipeStruct.self, from: json) else {
-                        callBack(false, nil, "error in JSONDecoder")
-                        return
-                    }
-                    // TODO: Meilleurs solution pour parser ?
-                    let recipe = responseJSON
+//        AF.request(getRecipeUrlString).responseDecodable {(response: DataResponse<Recipe>) in
+//                guard let recipe = response.value else {
+//                    callBack(false, nil, "error in JSONDecoder")
+//                    return
+//                }
+//
+        AF.request(getRecipeUrlString).responseData { response in
+            guard let data = response.result.value else {
+                callBack(false, nil, "error in JSONDecoder")
+                return
+            }
+            var recipe = Recipe()
+            let decoder = JSONDecoder()
 
-                    callBack(true, recipe, "")
+            if let context = CodingUserInfoKey.context {
+                decoder.userInfo[context] = AppDelegate.viewContext
+            }
+            do { recipe = try decoder.decode(Recipe.self, from: data)
+            } catch {
+                print("error parsing")
+            }
+            callBack(true, recipe, "")
         }
     }
 }
+// TODO: Tests à faire

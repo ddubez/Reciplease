@@ -18,12 +18,12 @@
     </entity>
     <entity name="Recipe" representedClassName=".Recipe" syncable="YES" codeGenerationType="category">
         <attribute name="bitter" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="meaty" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="piquant" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="recipeId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="salty" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="smallImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="sour" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -40,6 +40,6 @@
         <element name="Cuisine" positionX="38.4453125" positionY="85.09765625" width="128" height="73"/>
         <element name="Holiday" positionX="63.234375" positionY="194.87890625" width="128" height="73"/>
         <element name="Ingredient" positionX="36.1640625" positionY="312.11328125" width="128" height="73"/>
-        <element name="Recipe" positionX="-311.26953125" positionY="-31.6484375" width="128" height="298"/>
+        <element name="Recipe" positionX="-311.26953125" positionY="-29.6484375" width="128" height="298"/>
     </elements>
 </model>

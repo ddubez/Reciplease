@@ -22,5 +22,5 @@ class RecipeImageService {
             completionHandler(data)
         }
     }
-
 }
+// TODO: Tests à faire
