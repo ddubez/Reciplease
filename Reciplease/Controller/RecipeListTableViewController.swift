@@ -27,12 +27,6 @@ class RecipeListTableViewController: UITableViewController {
         super.viewDidLoad()
         totalMatchesLabel.text = "\(numberOfResult)"
         footerRecipeListTableView.isHidden = true
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -51,13 +45,32 @@ class RecipeListTableViewController: UITableViewController {
                                                         return UITableViewCell()
         }
 
+        if recipeListMatches[indexPath.row].listImage == nil {
+            // get image for the recipe in the cell only if not already get
+
+            if let smallImageUrls = recipeListMatches[indexPath.row].smallImageUrls {
+                let recipeImageService = RecipeImageService()
+                recipeImageService.getIconImage(imageUrl: smallImageUrls[0], completionHandler: { (data) in
+                    guard let data = data else {
+                        self.recipeListMatches[indexPath.row].listImage = UIImage(named: "defaultPhoto")
+                        tableView.reloadData()
+                        return
+                    }
+                    self.recipeListMatches[indexPath.row].listImage = UIImage(data: data)
+                    tableView.reloadData()
+                })
+            } else {
+                recipeListMatches[indexPath.row].listImage = UIImage(named: "defaultPhoto")
+            }
+        }
+
+        // configure the cell
         let recipe = recipeListMatches[indexPath.row]
         cell.configure(withRecipeName: recipe.recipeName,
                        ingredients: recipe.ingredients,
                        prepTime: recipe.totalTimeInSeconds,
                        rating: recipe.rating,
                        image: recipe.listImage)
-
         return cell
 
     }
@@ -69,24 +82,37 @@ class RecipeListTableViewController: UITableViewController {
             && scrollView.contentOffset.y >= 0
             && scrollView.contentOffset.y + offSetForLoadingData >=  maxOffSet {
 
-            self.isLoadingMore = true
-            print("super je recharge la vue")
-            footerRecipeListTableView.isHidden = false
+            let numberOfRecipeDisplayed = recipeListMatches.count
+
+            if numberOfRecipeDisplayed < numberOfResult {
+                toggleFooter(loading: true)
+                getMoreRecipe(start: numberOfRecipeDisplayed)
+            }
         }
-        // TODO: verifier si le nombre de réponses est atteins
-        
-        
-//        if !isLoadingMore && (Int(maximumOffset - contentOffset) <= offSetForLoadingData) {
-//            // Get more data - API call
-//    //        self.isLoadingMore = true
-//            print("reload data")
-//
-//            // Update UI
-////            dispatch_async(dispatch_get_main_queue()) {
-////                tableView.reloadData()
-////                self.isLoadingMore = false
-////            }
-//        }
+    }
+
+    private func getMoreRecipe(start: Int) {
+        RecipeListService.shared.getRecipeList(searchPhrase:
+        IngredientService.shared.searchList, start: start) {(success, recipeListMatches, numberOfResult, error) in
+            self.toggleFooter(loading: false)
+
+            if success == true, let recipeListMatches = recipeListMatches, let numberOfResult = numberOfResult {
+                self.numberOfResult = numberOfResult
+
+                for matche in recipeListMatches {
+                    self.recipeListMatches.append(matche)
+                }
+
+                self.tableView.reloadData()
+            } else {
+                self.displayAlert(with: error)
+            }
+        }
+    }
+
+    private func toggleFooter(loading: Bool) {
+        isLoadingMore = loading
+        footerRecipeListTableView.isHidden = !loading
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -141,5 +167,14 @@ class RecipeListTableViewController: UITableViewController {
     }
     */
 }
+// MARK: - Alert
+extension RecipeListTableViewController {
+    func displayAlert(with message: String) {
+        let alert = UIAlertController(title: "Error!", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+}
 // TODO: ajouter titre dans la navigation bar
 // TODO: format spérateur milier pour nombre recherches
+// TODO: Refactoriser
