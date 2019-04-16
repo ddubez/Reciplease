@@ -175,6 +175,6 @@ extension RecipeListTableViewController {
         self.present(alert, animated: true, completion: nil)
     }
 }
-// TODO: ajouter titre dans la navigation bar
-// TODO: format spérateur milier pour nombre recherches
-// TODO: Refactoriser
+// TODO:    - ajouter titre dans la navigation bar
+//          - format spérateur milier pour nombre recherches
+//          - Refactoriser

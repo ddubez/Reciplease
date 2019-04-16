@@ -57,5 +57,5 @@ class RecipeListService {
         }
     }
 }
-// TODO: Tests à faire
-// TODO: gerer les erreurs dans l'appel de la fonction
+// TODO:    - Tests à faire
+//          - gerer les erreurs dans l'appel de la fonction
