@@ -37,8 +37,8 @@ class RecipeService {
 //                    callBack(false, nil, "error in JSONDecoder")
 //                    return
 //                }
-//
-        AF.request(getRecipeUrlString).responseData { response in
+
+        AF.request(getRecipeUrlString, parameters: RecipeService.recipeUrlParameters).responseData { response in
             guard let data = response.result.value else {
                 callBack(false, nil, "error in JSONDecoder")
                 return
@@ -46,15 +46,17 @@ class RecipeService {
             var recipe = Recipe()
             let decoder = JSONDecoder()
 
-            if let context = CodingUserInfoKey.context {
-                decoder.userInfo[context] = AppDelegate.viewContext
-            }
+            decoder.userInfo[CodingUserInfoKey.context!] = AppDelegate.viewContext
+
             do { recipe = try decoder.decode(Recipe.self, from: data)
             } catch {
-                print("error parsing")
+                callBack(false, nil, "error parsing recipe")
             }
+
             callBack(true, recipe, "")
         }
     }
 }
-// TODO: Tests à faire
+// TODO:    - Tests à faire
+//          - gerer les erreur dans la reception du JSON : ajouter les proprietés
+//          dans Recipe pour traiter les erreurs

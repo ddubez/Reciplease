@@ -528,7 +528,7 @@
                                             <constraint firstAttribute="width" secondItem="9be-Al-FLL" secondAttribute="height" multiplier="45:103" id="Ewa-BP-XTZ"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hJp-oI-jtN">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hJp-oI-jtN">
                                         <rect key="frame" x="22.666666666666657" y="40" width="230" height="230"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="hJp-oI-jtN" secondAttribute="height" multiplier="1:1" id="rJt-VL-8rg"/>
@@ -580,23 +580,32 @@
                                     </activityIndicatorView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y9O-xR-rfS">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="214"/>
-                                        <color key="backgroundColor" red="0.94789146769999999" green="0.94331228190000005" blue="0.95247065360000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <view key="tableFooterView" contentMode="scaleToFill" id="prg-VM-L4t">
                                             <rect key="frame" x="0.0" y="48" width="355" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Attributions" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOL-PJ-h3N">
-                                                    <rect key="frame" x="5" y="5" width="345" height="34"/>
+                                                    <rect key="frame" x="5" y="5" width="260" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zRQ-Z6-jFj">
+                                                    <rect key="frame" x="270" y="5" width="80" height="34"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="giZ-LD-kFa"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="zOL-PJ-h3N" secondAttribute="bottom" constant="5" id="4na-EL-4ts"/>
+                                                <constraint firstItem="zRQ-Z6-jFj" firstAttribute="top" secondItem="prg-VM-L4t" secondAttribute="top" constant="5" id="8XV-Ip-SgN"/>
+                                                <constraint firstAttribute="bottom" secondItem="zRQ-Z6-jFj" secondAttribute="bottom" constant="5" id="ASo-hN-FG4"/>
+                                                <constraint firstItem="zRQ-Z6-jFj" firstAttribute="leading" secondItem="zOL-PJ-h3N" secondAttribute="trailing" constant="5" id="Dn9-Hk-NHt"/>
                                                 <constraint firstItem="zOL-PJ-h3N" firstAttribute="top" secondItem="prg-VM-L4t" secondAttribute="top" constant="5" id="HCp-in-ybG"/>
+                                                <constraint firstAttribute="trailing" secondItem="zRQ-Z6-jFj" secondAttribute="trailing" constant="5" id="WQQ-kc-IYq"/>
                                                 <constraint firstItem="zOL-PJ-h3N" firstAttribute="leading" secondItem="prg-VM-L4t" secondAttribute="leading" constant="5" id="k0X-sr-lPN"/>
-                                                <constraint firstAttribute="trailing" secondItem="zOL-PJ-h3N" secondAttribute="trailing" constant="5" id="nWk-wD-FK1"/>
                                             </constraints>
                                         </view>
                                         <prototypes>
@@ -614,17 +623,23 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="rGB-Xa-wri" secondAttribute="trailing" constant="5" id="42z-lF-ve3"/>
                                                         <constraint firstItem="rGB-Xa-wri" firstAttribute="centerY" secondItem="41j-cI-CNF" secondAttribute="centerY" id="XbX-Fk-xtT"/>
                                                         <constraint firstItem="rGB-Xa-wri" firstAttribute="leading" secondItem="41j-cI-CNF" secondAttribute="leading" constant="5" id="wdu-s8-O0W"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <color key="backgroundColor" red="0.94789146769999999" green="0.94331228190000005" blue="0.95247065360000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <connections>
                                                     <outlet property="titleLabel" destination="rGB-Xa-wri" id="emv-X1-7zM"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="pgE-Kz-b9V" id="byv-IJ-V3d"/>
+                                            <outlet property="delegate" destination="pgE-Kz-b9V" id="EYt-AQ-9q2"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <constraints>
@@ -664,13 +679,16 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="piU-jC-KbF" id="Ihx-Ur-4HU"/>
+                        <outlet property="attributionImage" destination="zRQ-Z6-jFj" id="b3i-2P-YUw"/>
                         <outlet property="attributionLabel" destination="zOL-PJ-h3N" id="1PH-R3-xBq"/>
+                        <outlet property="getDirectionButton" destination="iLc-Ug-2R8" id="nIW-S6-NSy"/>
                         <outlet property="imageBox" destination="Ix5-cX-KIo" id="Qg5-bN-YG8"/>
                         <outlet property="ingredientsTableView" destination="y9O-xR-rfS" id="Lbh-q9-S0s"/>
                         <outlet property="nameLabel" destination="tHH-EA-GTK" id="ghd-7l-L4r"/>
                         <outlet property="preparationTimeLabel" destination="eeb-ue-wnv" id="CC0-L3-OxA"/>
                         <outlet property="ratingLabel" destination="dCl-qk-KsB" id="gjw-5d-jbS"/>
                         <outlet property="recipeImage" destination="hJp-oI-jtN" id="fWt-lz-VUg"/>
+                        <outlet property="saveButton" destination="PdZ-6O-feb" id="6MB-6f-6zf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gKr-Qd-p2n" userLabel="First Responder" sceneMemberID="firstResponder"/>

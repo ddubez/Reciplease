@@ -1,38 +1,40 @@
 //
-//  Course.swift
+//  IngredientsLine.swift
 //  Reciplease
 //
-//  Created by David Dubez on 12/03/2019.
+//  Created by David Dubez on 21/04/2019.
 //  Copyright © 2019 David Dubez. All rights reserved.
 //
 
 import Foundation
 import CoreData
 
-class Course: NSManagedObject, Codable {
+class IngredientsLine: NSManagedObject, Codable {
+    // creation of structure like JSON model response
 
     enum CodingKeys: String, CodingKey {
-        case name
+        case line = ""
     }
 
     required convenience init(from decoder: Decoder) throws {
         // Create NSEntityDescription with NSManagedObjectContext
         guard let contextUserInfoKey = CodingUserInfoKey.context,
             let managedObjectContext = decoder.userInfo[contextUserInfoKey] as? NSManagedObjectContext,
-            let entity = NSEntityDescription.entity(forEntityName: "Course", in: managedObjectContext) else {
-                fatalError("Failed to decode Course!")
+            let entity = NSEntityDescription.entity(forEntityName: "IngredientsLine", in: managedObjectContext) else {
+                fatalError("Failed to decode IngredientsLines!")
         }
-        self.init(entity: entity, insertInto: nil)
+        self.init(entity: entity, insertInto: managedObjectContext)
 
         // Decode
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        name = try values.decode(String.self, forKey: .name)
+        line = try values.decode(String.self, forKey: .line)
     }
 }
 
-extension Course {
+extension IngredientsLine {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(name, forKey: .name)
+        try container.encode(line, forKey: .line)
+
     }
 }

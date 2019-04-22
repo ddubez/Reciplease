@@ -13,8 +13,9 @@ class RecipeViewController: UIViewController {
     // MARK: - PROPERTIES
     var recipeId: String!
     var recipe = Recipe()
-    
-    enum displayState {
+    var sourceRecipeUrl = ""
+
+    enum DisplayState {
         case loading, loaded, error
     }
 
@@ -26,8 +27,10 @@ class RecipeViewController: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var ingredientsTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var getDirectionButton: UIButton!
     @IBOutlet weak var attributionLabel: UILabel!
+    @IBOutlet weak var attributionImage: UIImageView!
 
     // MARK: - ACTIONS
     @IBAction func didTapSaveRecipe(_ sender: UIBarButtonItem) {
@@ -42,6 +45,7 @@ class RecipeViewController: UIViewController {
         setImageBox()
         setRecipeDisplay(displayState: .loading)
         toggleIngredientsList(searching: true)
+        ingredientsTableView.showsVerticalScrollIndicator = true
 
         RecipeService.shared.getRecipe(recipeId: recipeId) { (success, recipe, error) in
             self.toggleIngredientsList(searching: false)
@@ -49,8 +53,8 @@ class RecipeViewController: UIViewController {
                 self.recipe = recipeGetted
                 self.setRecipeDisplay(displayState: .loaded)
             } else {
-                self.setRecipeDisplay(displayState: .error)
                 self.displayAlert(with: error)
+                self.setRecipeDisplay(displayState: .error)
             }
         }
     }
@@ -71,22 +75,66 @@ class RecipeViewController: UIViewController {
         imageBox.transform = transform
     }
 
-    private func setRecipeDisplay(displayState: displayState) {
+    private func setRecipeDisplay(displayState: DisplayState) {
         switch displayState {
         case .loading:
+            getDirectionButton.isHidden = true
             nameLabel.text = "Loading ... "
             recipeImage.image = UIImage(named: "defaultPhoto")
+            preparationTimeLabel.text = "..."
+            ratingLabel.text = "..."
         case .loaded:
+            getDirectionButton.isHidden = false
             nameLabel.text = recipe.name
+            let totalTimeInMinute = recipe.totalTimeInSeconds / 60
+            preparationTimeLabel.text = String(totalTimeInMinute) + " min"
+            ratingLabel.text = String(recipe.rating)
+            if let sourceRecipeUrlString = recipe.source?.sourceRecipeUrl {
+                sourceRecipeUrl = sourceRecipeUrlString
+            }
+            if let attributionText = recipe.attribution?.attributionText {
+                attributionLabel.text = attributionText
+            }
+            if let attributionImageUrl = recipe.attribution?.attributionLogo {
+                getImageForAttributionLogo(from: attributionImageUrl)
+            }
+
+            if let imagesRecipeUrl = recipe.images?.hostedLargeUrl {
+                getImageForRecipe(from: imagesRecipeUrl)
+            }
 
         case .error:
+            getDirectionButton.isHidden = true
+            ingredientsTableView.isHidden = true
             nameLabel.text = "Sorry, no recipe"
             recipeImage.image = UIImage(named: "defaultPhoto")
+            preparationTimeLabel.text = "?"
+            ratingLabel.text = "?"
         }
     }
 
+    private func getImageForRecipe(from: String) {
+        let recipeImageService = RecipeImageService()
+        recipeImageService.getIconImage(imageUrl: from, completionHandler: { (data) in
+            guard let data = data else {
+                return
+            }
+            self.recipeImage.image = UIImage(data: data)
+        })
+    }
+
+    private func getImageForAttributionLogo(from: String) {
+        let recipeImageService = RecipeImageService()
+        recipeImageService.getIconImage(imageUrl: from, completionHandler: { (data) in
+            guard let data = data else {
+                return
+            }
+            self.attributionImage.image = UIImage(data: data)
+        })
+    }
+
     private func openUrlRecipe() {
-        let urlString = "http://www.yummly.com/recipe/Hot-Turkey-Salad-Sandwiches-Allrecipes"
+        let urlString = sourceRecipeUrl
         guard let url = URL(string: urlString) else { return }
         UIApplication.shared.open(url)
     }
@@ -106,6 +154,27 @@ class RecipeViewController: UIViewController {
     }
     */
 }
+// MARK: - TABLEVIEW
+extension RecipeViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return recipe.ingredientLines.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientRecipeTableViewCell",
+                                                       for: indexPath) as? IngredientRecipeTableViewCell else {
+                                                        return UITableViewCell()
+        }
+
+        let ingredientLine = recipe.ingredientLines[indexPath.row]
+        cell.configure(withTitle: ingredientLine)
+
+        return cell
+    }
+}
 
 // MARK: - Alert
 extension RecipeViewController {
@@ -116,9 +185,9 @@ extension RecipeViewController {
     }
 }
 
-// TODO:    - Mettre à jour données à afficher en fonction du RECIPE
-//          - Faire TableView,
+// TODO:    - sauvegarde de la recette ,
+//          - affichage Loading et Error,
 //          - capitalise recipe name,
 //          - mettre une stack view pour traiter l'erreur sur l'iphone 5
 //          - voir probleme de la shadow sur l'image
-//          - Mettre le bon Url
+//          - mettre en permanance l'indicateur de scroll

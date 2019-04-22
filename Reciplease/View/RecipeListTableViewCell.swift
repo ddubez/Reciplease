@@ -29,6 +29,11 @@ class RecipeListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        smallImage.image = nil
+    }
+
     func configure(withRecipeName: String, ingredients: [String], prepTime: Int?, rating: Int?, image: UIImage?) {
         recipeNameLabel.text = withRecipeName
         ingredientsLabel.text = setListOf(ingredients: ingredients)
