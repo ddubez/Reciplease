@@ -43,7 +43,7 @@ class RecipeService {
                 callBack(false, nil, "error in JSONDecoder")
                 return
             }
-            var recipe = Recipe()
+            var recipe = Recipe(context: AppDelegate.viewContext)
             let decoder = JSONDecoder()
 
             decoder.userInfo[CodingUserInfoKey.context!] = AppDelegate.viewContext

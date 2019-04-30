@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Attribution" representedClassName=".Attribution" syncable="YES" codeGenerationType="category">
         <attribute name="attributionHtml" attributeType="String" syncable="YES"/>
         <attribute name="attributionLogo" optional="YES" attributeType="String" syncable="YES"/>
@@ -13,18 +13,19 @@
         <attribute name="hostedSmallUrl" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="images" inverseEntity="Recipe" syncable="YES"/>
     </entity>
-    <entity name="IngredientsLine" representedClassName=".IngredientsLine" syncable="YES" codeGenerationType="category">
+    <entity name="IngredientLine" representedClassName=".IngredientLine" syncable="YES" codeGenerationType="category">
         <attribute name="line" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="recipe" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recipe" syncable="YES"/>
+        <relationship name="recipe" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ingredientLines" inverseEntity="Recipe" syncable="YES"/>
     </entity>
     <entity name="Recipe" representedClassName=".Recipe" syncable="YES" codeGenerationType="category">
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="recipeId" attributeType="String" syncable="YES"/>
         <attribute name="totalTimeInSeconds" optional="YES" attributeType="Integer 16" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="attribution" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Attribution" inverseName="recipe" inverseEntity="Attribution" syncable="YES"/>
-        <relationship name="images" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Image" inverseName="recipe" inverseEntity="Image" syncable="YES"/>
-        <relationship name="source" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Source" inverseName="recipe" inverseEntity="Source" syncable="YES"/>
+        <relationship name="attribution" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Attribution" inverseName="recipe" inverseEntity="Attribution" syncable="YES"/>
+        <relationship name="images" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Image" inverseName="recipe" inverseEntity="Image" syncable="YES"/>
+        <relationship name="ingredientLines" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="IngredientLine" inverseName="recipe" inverseEntity="IngredientLine" syncable="YES"/>
+        <relationship name="source" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Source" inverseName="recipe" inverseEntity="Source" syncable="YES"/>
     </entity>
     <entity name="Source" representedClassName=".Source" syncable="YES" codeGenerationType="category">
         <attribute name="sourceDisplayName" optional="YES" attributeType="String" syncable="YES"/>
@@ -33,10 +34,10 @@
         <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="source" inverseEntity="Recipe" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Recipe" positionX="-3321.078125" positionY="-1706.671875" width="128" height="148"/>
+        <element name="Attribution" positionX="-3091.90234375" positionY="-1724.13671875" width="128" height="118"/>
+        <element name="Image" positionX="-3505.265625" positionY="-1727.56640625" width="128" height="103"/>
+        <element name="Recipe" positionX="-3294.73828125" positionY="-1717.8046875" width="128" height="163"/>
         <element name="Source" positionX="-3089.57421875" positionY="-1565.41015625" width="128" height="103"/>
-        <element name="Attribution" positionX="-3091.84765625" positionY="-1701.40625" width="128" height="118"/>
-        <element name="IngredientsLine" positionX="-3517.50390625" positionY="-1695.734375" width="128" height="73"/>
-        <element name="Image" positionX="-3511.26953125" positionY="-1506.1796875" width="128" height="103"/>
+        <element name="IngredientLine" positionX="-3489.17578125" positionY="-1515.38671875" width="128" height="73"/>
     </elements>
 </model>

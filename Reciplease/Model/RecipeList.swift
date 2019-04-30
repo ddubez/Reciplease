@@ -9,9 +9,10 @@
 import Foundation
 import UIKit
 
-struct RecipeList: Codable {
+class RecipeList: Codable {
     // creation of structure like JSON model response
 
+    // MARK: - PROPERTIES
     var totalMatchCount: Int?
     var matches: [Matche]?
 

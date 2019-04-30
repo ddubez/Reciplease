@@ -12,11 +12,17 @@ import CoreData
 class Recipe: NSManagedObject, Codable {
 // creation of structure like JSON model response
 
-    var ingredientLines: [String] = []
+    static var all: [Recipe] {
+        let request: NSFetchRequest<Recipe> = Recipe.fetchRequest()
+        guard let recipes = try? AppDelegate.viewContext.fetch(request) else {
+            return []
+        }
+        return recipes
+    }
 
     enum CodingKeys: String, CodingKey {
         case recipeId = "id"
-        case name, source, attribution, totalTimeInSeconds, rating, ingredientLines, images
+        case name, source, attribution, totalTimeInSeconds, rating, images, ingredientLines
     }
 
     required convenience init(from decoder: Decoder) throws {
@@ -36,13 +42,32 @@ class Recipe: NSManagedObject, Codable {
         attribution = try values.decode(Attribution.self, forKey: .attribution)
         totalTimeInSeconds = try values.decode(Int16.self, forKey: .totalTimeInSeconds)
         rating = try values.decode(Int16.self, forKey: .rating)
-        
-        let imageOne = try values.decode([Image].self, forKey: .images)
-        images = imageOne[0]
 
-        ingredientLines = try values.decode([String].self, forKey: .ingredientLines)
+        let ingredientArray = try values.decode([String].self, forKey: .ingredientLines)
+        var ingredientLinesArray = [IngredientLine]()
 
-//        ingredientsLines = try values.decode(IngredientsLine.self, forKey: .ingredientsLines)
+        for ingredient in ingredientArray {
+            let ingredientLine = IngredientLine(context: AppDelegate.viewContext)
+            ingredientLine.line = ingredient
+            ingredientLinesArray.append(ingredientLine)
+        }
+
+//        ingredientLines?.setValue("eeeee", forKey: "name")
+//        let ppppppp = NSOrderedSet(array: [name: "eeee", name:"eqzrra"])
+//
+//        ingredientLines = ppppppp
+
+//        ingredientLines = NSOrderedSet(array: try values.decode([IngredientLine].self, forKey: .ingredientLines)
+//        let ingredientLineOne = IngredientLine(context: AppDelegate.viewContext)
+//        ingredientLineOne.line = "tomates"
+//        let ingredientLineTwo = IngredientLine(context: AppDelegate.viewContext)
+//        ingredientLineTwo.line = "fraise"
+
+        ingredientLines = NSOrderedSet(array: ingredientLinesArray)
+
+        let firstImage = try values.decode([Image].self, forKey: .images)
+        images = firstImage[0]
+
     }
 }
 
@@ -58,6 +83,11 @@ extension Recipe {
         try container.encode(images, forKey: .images)
 
  //       try container.encode(ingredientsLines, forKey: .ingredientsLines)
+        
 // TODO:    - ingredients line dans coreData
+        //  - encode ingredients line
+
+        
+        
     }
 }

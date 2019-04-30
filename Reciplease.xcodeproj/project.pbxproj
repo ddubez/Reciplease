@@ -18,6 +18,7 @@
 		4F2F0C19225FE92A0045C391 /* CodingUserInfoKey+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F0C18225FE92A0045C391 /* CodingUserInfoKey+Extension.swift */; };
 		4F2F0C1B2261D4280045C391 /* RecipeListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F0C1A2261D4280045C391 /* RecipeListService.swift */; };
 		4F2F0C1D2261DBC50045C391 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F0C1C2261DBC50045C391 /* RecipeViewController.swift */; };
+		4F32C2072276E83300F6BA6B /* IngredientLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32C2062276E83300F6BA6B /* IngredientLine.swift */; };
 		4F45CE12222EF2ED004246EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F45CE11222EF2ED004246EE /* AppDelegate.swift */; };
 		4F45CE17222EF2ED004246EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F45CE15222EF2ED004246EE /* Main.storyboard */; };
 		4F45CE1A222EF2ED004246EE /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4F45CE18222EF2ED004246EE /* Reciplease.xcdatamodeld */; };
@@ -29,7 +30,6 @@
 		4F45CE4A22332965004246EE /* RecipeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F45CE4922332965004246EE /* RecipeSearchViewController.swift */; };
 		4F62A089226CCF4800398F02 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F62A088226CCF4800398F02 /* Source.swift */; };
 		4F62A08B226D158F00398F02 /* Attribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F62A08A226D158F00398F02 /* Attribution.swift */; };
-		4F62A08D226D1B1300398F02 /* IngredientsLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F62A08C226D1B1300398F02 /* IngredientsLine.swift */; };
 		4F62A08F226DAFFD00398F02 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F62A08E226DAFFD00398F02 /* Image.swift */; };
 		4F87EB782258D7CD00B6D516 /* RecipeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F87EB772258D7CD00B6D516 /* RecipeListTableViewCell.swift */; };
 		4F87EB7A225C87E300B6D516 /* RecipeImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F87EB79225C87E300B6D516 /* RecipeImageService.swift */; };
@@ -63,6 +63,7 @@
 		4F2F0C18225FE92A0045C391 /* CodingUserInfoKey+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodingUserInfoKey+Extension.swift"; sourceTree = "<group>"; };
 		4F2F0C1A2261D4280045C391 /* RecipeListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListService.swift; sourceTree = "<group>"; };
 		4F2F0C1C2261DBC50045C391 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		4F32C2062276E83300F6BA6B /* IngredientLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientLine.swift; sourceTree = "<group>"; };
 		4F45CE0E222EF2ED004246EE /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F45CE11222EF2ED004246EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F45CE16222EF2ED004246EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -78,7 +79,6 @@
 		4F45CE4922332965004246EE /* RecipeSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchViewController.swift; sourceTree = "<group>"; };
 		4F62A088226CCF4800398F02 /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 		4F62A08A226D158F00398F02 /* Attribution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attribution.swift; sourceTree = "<group>"; };
-		4F62A08C226D1B1300398F02 /* IngredientsLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsLine.swift; sourceTree = "<group>"; };
 		4F62A08E226DAFFD00398F02 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		4F87EB772258D7CD00B6D516 /* RecipeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListTableViewCell.swift; sourceTree = "<group>"; };
 		4F87EB79225C87E300B6D516 /* RecipeImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeImageService.swift; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 				4F45CE18222EF2ED004246EE /* Reciplease.xcdatamodeld */,
 				4F62A08E226DAFFD00398F02 /* Image.swift */,
 				4F14E59D22370E8A00A60E11 /* Recipe.swift */,
-				4F62A08C226D1B1300398F02 /* IngredientsLine.swift */,
+				4F32C2062276E83300F6BA6B /* IngredientLine.swift */,
 				4F62A088226CCF4800398F02 /* Source.swift */,
 				4F14E5A12237B40400A60E11 /* RecipeList.swift */,
 				4F62A08A226D158F00398F02 /* Attribution.swift */,
@@ -438,7 +438,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F62A08D226D1B1300398F02 /* IngredientsLine.swift in Sources */,
 				4F2F0C1D2261DBC50045C391 /* RecipeViewController.swift in Sources */,
 				4F45CE4A22332965004246EE /* RecipeSearchViewController.swift in Sources */,
 				4F45CE1A222EF2ED004246EE /* Reciplease.xcdatamodeld in Sources */,
@@ -453,6 +452,7 @@
 				4F14E5962236974D00A60E11 /* IngredientService.swift in Sources */,
 				4F14E5A22237B40400A60E11 /* RecipeList.swift in Sources */,
 				4F2F0C19225FE92A0045C391 /* CodingUserInfoKey+Extension.swift in Sources */,
+				4F32C2072276E83300F6BA6B /* IngredientLine.swift in Sources */,
 				4F196E742265AC2F007AF028 /* IngredientRecipeTableViewCell.swift in Sources */,
 				4F45CE12222EF2ED004246EE /* AppDelegate.swift in Sources */,
 				4F62A08B226D158F00398F02 /* Attribution.swift in Sources */,

@@ -12,10 +12,16 @@ class RecipeListTableViewController: UITableViewController {
 
     // MARK: - PROPERTIES
     var recipeListMatches: [RecipeList.Matche]!
+    var recipeListToDisplay = [RecipeList.Matche]()
     var numberOfResult = 0
     var selectedRecipeId = ""
     let offSetForLoadingData = CGFloat(100)
     var isLoadingMore = false
+    var dataToDisplay = DataToDisplay.search
+
+    enum DataToDisplay {
+        case search, favorite
+    }
 
     // MARK: - IBOUTLETS
     @IBOutlet weak var totalMatchesLabel: UILabel!
@@ -25,8 +31,52 @@ class RecipeListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if recipeListMatches == nil {
+            dataToDisplay = .favorite
+        } else {
+            dataToDisplay = .search
+        }
+
+        switch dataToDisplay {
+        case .search:
+            recipeListToDisplay = recipeListMatches
+        case .favorite:
+            recipeListToDisplay = importFavoriteRecipe()
+        }
+
         totalMatchesLabel.text = "\(numberOfResult)"
         footerRecipeListTableView.isHidden = true
+    }
+
+   private func importFavoriteRecipe() -> [RecipeList.Matche] {
+        var recipeListMatches = [RecipeList.Matche]()
+        for recipe in Recipe.all {
+            guard let recipeId = recipe.recipeId else {
+                return [RecipeList.Matche]()
+            }
+            guard let recipeName = recipe.name else {
+                return [RecipeList.Matche]()
+            }
+            var match = RecipeList.Matche(sourceDisplayName: "-",
+                                          imagesUrlsBySize: nil,
+                                          ingredients: ["-"],
+                                          referenceId: recipeId,
+                                          smallImageUrls: nil,
+                                          recipeName: recipeName,
+                                          totalTimeInSeconds: 0,
+                                          attributes: nil,
+                                          flavors: nil,
+                                          rating: 0,
+                                          listImage: nil)
+            if let recipeSource = recipe.source {
+                match.sourceDisplayName = recipeSource.sourceDisplayName
+            }
+
+            
+            recipeListMatches.append(match)
+        }
+        return recipeListMatches
     }
 
     // MARK: - Table view data source
@@ -36,7 +86,7 @@ class RecipeListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipeListMatches.count
+        return recipeListToDisplay.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,27 +95,27 @@ class RecipeListTableViewController: UITableViewController {
                                                         return UITableViewCell()
         }
 
-        if recipeListMatches[indexPath.row].listImage == nil {
+        if recipeListToDisplay[indexPath.row].listImage == nil {
             // get image for the recipe in the cell only if not already get
 
-            if let smallImageUrls = recipeListMatches[indexPath.row].smallImageUrls {
+            if let smallImageUrls = recipeListToDisplay[indexPath.row].smallImageUrls {
                 let recipeImageService = RecipeImageService()
                 recipeImageService.getIconImage(imageUrl: smallImageUrls[0], completionHandler: { (data) in
                     guard let data = data else {
-                        self.recipeListMatches[indexPath.row].listImage = UIImage(named: "defaultPhoto")
+                        self.recipeListToDisplay[indexPath.row].listImage = UIImage(named: "defaultPhoto")
                         tableView.reloadData()
                         return
                     }
-                    self.recipeListMatches[indexPath.row].listImage = UIImage(data: data)
+                    self.recipeListToDisplay[indexPath.row].listImage = UIImage(data: data)
                     tableView.reloadData()
                 })
             } else {
-                recipeListMatches[indexPath.row].listImage = UIImage(named: "defaultPhoto")
+                recipeListToDisplay[indexPath.row].listImage = UIImage(named: "defaultPhoto")
             }
         }
 
         // configure the cell
-        let recipe = recipeListMatches[indexPath.row]
+        let recipe = recipeListToDisplay[indexPath.row]
         cell.configure(withRecipeName: recipe.recipeName,
                        ingredients: recipe.ingredients,
                        prepTime: recipe.totalTimeInSeconds,
@@ -82,7 +132,7 @@ class RecipeListTableViewController: UITableViewController {
             && scrollView.contentOffset.y >= 0
             && scrollView.contentOffset.y + offSetForLoadingData >=  maxOffSet {
 
-            let numberOfRecipeDisplayed = recipeListMatches.count
+            let numberOfRecipeDisplayed = recipeListToDisplay.count
 
             if numberOfRecipeDisplayed < numberOfResult {
                 toggleFooter(loading: true)
@@ -100,7 +150,7 @@ class RecipeListTableViewController: UITableViewController {
                 self.numberOfResult = numberOfResult
 
                 for matche in recipeListMatches {
-                    self.recipeListMatches.append(matche)
+                    self.recipeListToDisplay.append(matche)
                 }
 
                 self.tableView.reloadData()
@@ -116,7 +166,7 @@ class RecipeListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedRecipeId = recipeListMatches[indexPath.row].referenceId
+        selectedRecipeId = recipeListToDisplay[indexPath.row].referenceId
         self.performSegue(withIdentifier: "segueToRecipe", sender: nil)
     }
 
@@ -178,3 +228,7 @@ extension RecipeListTableViewController {
 // TODO:    - ajouter titre dans la navigation bar
 //          - format spérateur milier pour nombre recherches
 //          - Refactoriser
+//          - erreur affichage
+//          - refactoriser enum dataToDisplay
+//          - finir le remplissage de listMacth avec recipe
+//          - utiliser NSFetchResultController pour remplir la table view

@@ -12,8 +12,9 @@ class RecipeViewController: UIViewController {
 
     // MARK: - PROPERTIES
     var recipeId: String!
-    var recipe = Recipe()
+    var recipe = Recipe(context: AppDelegate.viewContext)
     var sourceRecipeUrl = ""
+    var ifRecipeStored = false
 
     enum DisplayState {
         case loading, loaded, error
@@ -34,6 +35,12 @@ class RecipeViewController: UIViewController {
 
     // MARK: - ACTIONS
     @IBAction func didTapSaveRecipe(_ sender: UIBarButtonItem) {
+
+        do { try AppDelegate.viewContext.save()
+            saveButton.image = UIImage(named: "selectedStar")
+        } catch let error as NSError {
+            displayAlert(with: "error in saving recipe ! ----- \(error)")
+        }
     }
     @IBAction func didTapGetDirectionButton(_ sender: UIButton) {
         openUrlRecipe()
@@ -57,6 +64,18 @@ class RecipeViewController: UIViewController {
                 self.setRecipeDisplay(displayState: .error)
             }
         }
+
+        for oneRecipe in Recipe.all {
+            if let oneRecipeId = oneRecipe.recipeId {
+                print("&&&&&&&&&&&&&&&&&&&&&")
+                print("\(oneRecipeId)")
+
+  //              if recipe.recipeId == oneRecipeId {
+//                    ifRecipeStored = true
+//                    saveButton.image = UIImage(named: "selectedStar")
+//                }
+           }
+       }
     }
 
     private func setImageBox() {
@@ -160,7 +179,11 @@ extension RecipeViewController: UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipe.ingredientLines.count
+
+        guard let recipeIngredientsLines = recipe.ingredientLines else {
+            return 1
+        }
+        return recipeIngredientsLines.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -168,10 +191,14 @@ extension RecipeViewController: UITableViewDataSource, UITableViewDelegate {
                                                        for: indexPath) as? IngredientRecipeTableViewCell else {
                                                         return UITableViewCell()
         }
+        guard let recipeIngredientsLines = recipe.ingredientLines else {
+            return UITableViewCell()
+        }
 
-        let ingredientLine = recipe.ingredientLines[indexPath.row]
-        cell.configure(withTitle: ingredientLine)
-
+        if let ingredientLine = recipeIngredientsLines.object(at: indexPath.row) as? IngredientLine {
+            if let ingredient = ingredientLine.line {
+                cell.configure(withTitle: ingredient) }
+            }
         return cell
     }
 }
@@ -186,8 +213,12 @@ extension RecipeViewController {
 }
 
 // TODO:    - sauvegarde de la recette ,
-//          - affichage Loading et Error,
+//          - bloquer la suavegarde de la recette si elle est deja ou la deselectionner
+//          - problème affichage sur l'iphone 8
 //          - capitalise recipe name,
 //          - mettre une stack view pour traiter l'erreur sur l'iphone 5
 //          - voir probleme de la shadow sur l'image
 //          - mettre en permanance l'indicateur de scroll
+//          - sauvergarder les images dans coredata
+//          - Verifier le modele MVC ( que toutes les données ne soient que dans le Model)
+//          - erreur affichage

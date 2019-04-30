@@ -154,4 +154,7 @@ extension RecipeSearchViewController {
     }
 }
 
-// TODO: message alerte pas de resultat
+// TODO:    - message alerte pas de resultat
+//          - erreur affichage
+//          - fenetre des options
+
