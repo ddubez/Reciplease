@@ -12,7 +12,7 @@ class RecipeViewController: UIViewController {
 
     // MARK: - PROPERTIES
     var recipeId: String!
-    var recipe = Recipe(context: AppDelegate.viewContext)
+    var recipe: Recipe?
     var sourceRecipeUrl = ""
     var ifRecipeStored = false
 
@@ -39,7 +39,7 @@ class RecipeViewController: UIViewController {
         do { try AppDelegate.viewContext.save()
             saveButton.image = UIImage(named: "selectedStar")
         } catch let error as NSError {
-            displayAlert(with: "error in saving recipe ! ----- \(error)")
+            displayAlert(with: "error in saving recipe ! \(error)")
         }
     }
     @IBAction func didTapGetDirectionButton(_ sender: UIButton) {
@@ -52,8 +52,9 @@ class RecipeViewController: UIViewController {
         setImageBox()
         setRecipeDisplay(displayState: .loading)
         toggleIngredientsList(searching: true)
-        ingredientsTableView.showsVerticalScrollIndicator = true
+ 
 
+        
         RecipeService.shared.getRecipe(recipeId: recipeId) { (success, recipe, error) in
             self.toggleIngredientsList(searching: false)
             if success == true, let recipeGetted = recipe {
@@ -88,7 +89,7 @@ class RecipeViewController: UIViewController {
         recipeImage.layer.shadowOpacity = 5.0
 
         let rotationAngle = (CGFloat.pi / 12)
-        let translationTransfort = CGAffineTransform(translationX: 30, y: 0)
+        let translationTransfort = CGAffineTransform(translationX: 35, y: 0)
         let rotationTransform = CGAffineTransform(rotationAngle: rotationAngle)
         let transform = translationTransfort.concatenating(rotationTransform)
         imageBox.transform = transform
@@ -103,6 +104,7 @@ class RecipeViewController: UIViewController {
             preparationTimeLabel.text = "..."
             ratingLabel.text = "..."
         case .loaded:
+            guard let recipe = recipe else { return }
             getDirectionButton.isHidden = false
             nameLabel.text = recipe.name
             let totalTimeInMinute = recipe.totalTimeInSeconds / 60
@@ -180,7 +182,7 @@ extension RecipeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        guard let recipeIngredientsLines = recipe.ingredientLines else {
+        guard let recipeIngredientsLines = recipe?.ingredientLines else {
             return 1
         }
         return recipeIngredientsLines.count
@@ -191,7 +193,7 @@ extension RecipeViewController: UITableViewDataSource, UITableViewDelegate {
                                                        for: indexPath) as? IngredientRecipeTableViewCell else {
                                                         return UITableViewCell()
         }
-        guard let recipeIngredientsLines = recipe.ingredientLines else {
+        guard let recipeIngredientsLines = recipe?.ingredientLines else {
             return UITableViewCell()
         }
 
@@ -218,7 +220,9 @@ extension RecipeViewController {
 //          - capitalise recipe name,
 //          - mettre une stack view pour traiter l'erreur sur l'iphone 5
 //          - voir probleme de la shadow sur l'image
-//          - mettre en permanance l'indicateur de scroll
+//          - mettre en permanance l'indicateur de scroll sur la table view d'ingredients
 //          - sauvergarder les images dans coredata
 //          - Verifier le modele MVC ( que toutes les données ne soient que dans le Model)
+//          - aller chercher les données dans coredata si elles y sont
 //          - erreur affichage
+//          - mettre des options de tri sur l'entete sur les recettes favorites

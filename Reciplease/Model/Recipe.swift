@@ -52,22 +52,10 @@ class Recipe: NSManagedObject, Codable {
             ingredientLinesArray.append(ingredientLine)
         }
 
-//        ingredientLines?.setValue("eeeee", forKey: "name")
-//        let ppppppp = NSOrderedSet(array: [name: "eeee", name:"eqzrra"])
-//
-//        ingredientLines = ppppppp
-
-//        ingredientLines = NSOrderedSet(array: try values.decode([IngredientLine].self, forKey: .ingredientLines)
-//        let ingredientLineOne = IngredientLine(context: AppDelegate.viewContext)
-//        ingredientLineOne.line = "tomates"
-//        let ingredientLineTwo = IngredientLine(context: AppDelegate.viewContext)
-//        ingredientLineTwo.line = "fraise"
-
         ingredientLines = NSOrderedSet(array: ingredientLinesArray)
 
         let firstImage = try values.decode([Image].self, forKey: .images)
         images = firstImage[0]
-
     }
 }
 

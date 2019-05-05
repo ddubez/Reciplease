@@ -50,33 +50,7 @@ class RecipeListTableViewController: UITableViewController {
     }
 
    private func importFavoriteRecipe() -> [RecipeList.Matche] {
-        var recipeListMatches = [RecipeList.Matche]()
-        for recipe in Recipe.all {
-            guard let recipeId = recipe.recipeId else {
-                return [RecipeList.Matche]()
-            }
-            guard let recipeName = recipe.name else {
-                return [RecipeList.Matche]()
-            }
-            var match = RecipeList.Matche(sourceDisplayName: "-",
-                                          imagesUrlsBySize: nil,
-                                          ingredients: ["-"],
-                                          referenceId: recipeId,
-                                          smallImageUrls: nil,
-                                          recipeName: recipeName,
-                                          totalTimeInSeconds: 0,
-                                          attributes: nil,
-                                          flavors: nil,
-                                          rating: 0,
-                                          listImage: nil)
-            if let recipeSource = recipe.source {
-                match.sourceDisplayName = recipeSource.sourceDisplayName
-            }
-
-            
-            recipeListMatches.append(match)
-        }
-        return recipeListMatches
+        return Recipe.all.compactMap(RecipeList.Matche.init(with:))
     }
 
     // MARK: - Table view data source
@@ -232,3 +206,4 @@ extension RecipeListTableViewController {
 //          - refactoriser enum dataToDisplay
 //          - finir le remplissage de listMacth avec recipe
 //          - utiliser NSFetchResultController pour remplir la table view
+//          - Si la liste est vide, laissez un message à l'utilisateur pour lui expliquer comment la remplir
