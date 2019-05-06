@@ -41,11 +41,12 @@ class RecipeListTableViewController: UITableViewController {
         switch dataToDisplay {
         case .search:
             recipeListToDisplay = recipeListMatches
+            totalMatchesLabel.text = formatNumberOfResults(with: numberOfResult, title: "Total matches : ")
         case .favorite:
             recipeListToDisplay = importFavoriteRecipe()
+            totalMatchesLabel.text = formatNumberOfResults(with: recipeListToDisplay.count,
+                                                           title: "Number of favorites : ")
         }
-
-        totalMatchesLabel.text = "\(numberOfResult)"
         footerRecipeListTableView.isHidden = true
     }
 
@@ -53,7 +54,16 @@ class RecipeListTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         if dataToDisplay == .favorite {
             recipeListToDisplay = importFavoriteRecipe()
+            totalMatchesLabel.text = formatNumberOfResults(with: recipeListToDisplay.count,
+                                                           title: "Number of favorites : ")
             tableView.reloadData()
+            if recipeListToDisplay.count == 0 {
+                displayAlert(with: """
+                                    sorry, you don't have favorite recipe !
+                                    you can save a recipe by tapping the star
+                                    on the upper right of search result screen !
+                                    """)
+            }
         }
     }
 
@@ -147,6 +157,18 @@ class RecipeListTableViewController: UITableViewController {
         footerRecipeListTableView.isHidden = !loading
     }
 
+    private func formatNumberOfResults(with number: Int, title: String) -> String? {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.locale = Locale(identifier: "fr_FR")
+
+        if let formattedNumber = formatter.string(from: NSNumber(value: number)) {
+            return title + formattedNumber
+        } else {
+            return nil
+        }
+    }
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRecipeId = recipeListToDisplay[indexPath.row].referenceId
         self.performSegue(withIdentifier: "segueToRecipe", sender: nil)
@@ -207,14 +229,8 @@ extension RecipeListTableViewController {
         self.present(alert, animated: true, completion: nil)
     }
 }
-// TODO:    - ajouter titre dans la navigation bar
-//          - format spérateur milier pour nombre recherches
+// TODO:
 //          - Refactoriser
-//          - erreur affichage
 //          - refactoriser enum dataToDisplay
-//          - finir le remplissage de listMacth avec recipe
-//          - pas d'ingredients ???
 //          - utiliser NSFetchResultController pour remplir la table view
-//          - Si la liste est vide, laissez un message à l'utilisateur pour lui expliquer comment la remplir
-//          - mettre le nombre de favoris à la place du nombre de matches
 //          - mettre des options de tri sur l'entete sur les recettes favorites

@@ -229,10 +229,7 @@ extension RecipeViewController {
     }
 }
 
-// TODO:    - problème affichage sur l'iphone 8
-//          - capitalise recipe name,
-//          - mettre une stack view pour traiter l'erreur sur l'iphone 5
-//          - voir probleme de la shadow sur l'image
+// TODO:    - problème affichage sur les autres Iphones : faire une scroll view pour tout voir
 //          - mettre en permanance l'indicateur de scroll sur la table view d'ingredients
 //          - sauvergarder les images dans coredata
 //          - Verifier le modele MVC ( que toutes les données ne soient que dans le Model)

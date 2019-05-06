@@ -42,16 +42,21 @@ extension RecipeList.Matche {
                 return nil
         }
         self.sourceDisplayName =  recipe.source?.sourceDisplayName
-        if let ingredientLines = recipe.ingredientLines {
-            if let ingredientLinesStringArray = ingredientLines.array as? [String] {
-                self.ingredients = ingredientLinesStringArray
-            } else {
-                self.ingredients = ["no ingredient"]
+
+        if let recipeIngredientLines = recipe.ingredientLines {
+            self.ingredients = []
+            for index in 0...(recipeIngredientLines.count - 1) {
+                if let ingredientLine = recipeIngredientLines.object(at: index) as? IngredientLine {
+                    if let ingredient = ingredientLine.line {
+                        self.ingredients.append(ingredient)
+                    }
+                }
             }
         } else {
             self.ingredients = ["no ingredient"]
         }
         referenceId = recipeId
+
         smallImageUrls = [recipe.images?.hostedSmallUrl] as? [String]
         self.recipeName = recipeName
         totalTimeInSeconds = Int(recipe.totalTimeInSeconds)
