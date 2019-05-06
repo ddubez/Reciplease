@@ -35,11 +35,22 @@ class RecipeViewController: UIViewController {
 
     // MARK: - ACTIONS
     @IBAction func didTapSaveRecipe(_ sender: UIBarButtonItem) {
+        if saveButton.image == UIImage(named: "selectedStar"), let recipeToDelete = recipe {
 
-        do { try AppDelegate.viewContext.save()
-            saveButton.image = UIImage(named: "selectedStar")
-        } catch let error as NSError {
-            displayAlert(with: "error in saving recipe ! \(error)")
+            AppDelegate.viewContext.delete(recipeToDelete)
+
+            do { try AppDelegate.viewContext.save()
+                saveButton.image = UIImage(named: "star")
+            } catch let error as NSError {
+                displayAlert(with: "error in deleting recipe ! \(error)")
+            }
+
+        } else {
+            do { try AppDelegate.viewContext.save()
+                saveButton.image = UIImage(named: "selectedStar")
+            } catch let error as NSError {
+                displayAlert(with: "error in saving recipe ! \(error)")
+            }
         }
     }
     @IBAction func didTapGetDirectionButton(_ sender: UIButton) {
@@ -51,32 +62,22 @@ class RecipeViewController: UIViewController {
         super.viewDidLoad()
         setImageBox()
         setRecipeDisplay(displayState: .loading)
-        toggleIngredientsList(searching: true)
- 
 
-        
-        RecipeService.shared.getRecipe(recipeId: recipeId) { (success, recipe, error) in
-            self.toggleIngredientsList(searching: false)
-            if success == true, let recipeGetted = recipe {
-                self.recipe = recipeGetted
-                self.setRecipeDisplay(displayState: .loaded)
-            } else {
-                self.displayAlert(with: error)
-                self.setRecipeDisplay(displayState: .error)
+        if let favoriteRecipe = checkFavoriteRecipe() {
+            saveButton.image = UIImage(named: "selectedStar")
+            self.recipe = favoriteRecipe
+            self.setRecipeDisplay(displayState: .loaded)
+        } else {
+            RecipeService.shared.getRecipe(recipeId: recipeId) { (success, recipe, error) in
+                if success == true, let recipeGetted = recipe {
+                    self.recipe = recipeGetted
+                    self.setRecipeDisplay(displayState: .loaded)
+                } else {
+                    self.displayAlert(with: error)
+                    self.setRecipeDisplay(displayState: .error)
+                }
             }
         }
-
-        for oneRecipe in Recipe.all {
-            if let oneRecipeId = oneRecipe.recipeId {
-                print("&&&&&&&&&&&&&&&&&&&&&")
-                print("\(oneRecipeId)")
-
-  //              if recipe.recipeId == oneRecipeId {
-//                    ifRecipeStored = true
-//                    saveButton.image = UIImage(named: "selectedStar")
-//                }
-           }
-       }
     }
 
     private func setImageBox() {
@@ -98,12 +99,14 @@ class RecipeViewController: UIViewController {
     private func setRecipeDisplay(displayState: DisplayState) {
         switch displayState {
         case .loading:
+            toggleIngredientsList(searching: true)
             getDirectionButton.isHidden = true
             nameLabel.text = "Loading ... "
             recipeImage.image = UIImage(named: "defaultPhoto")
             preparationTimeLabel.text = "..."
             ratingLabel.text = "..."
         case .loaded:
+            toggleIngredientsList(searching: false)
             guard let recipe = recipe else { return }
             getDirectionButton.isHidden = false
             nameLabel.text = recipe.name
@@ -125,6 +128,7 @@ class RecipeViewController: UIViewController {
             }
 
         case .error:
+            toggleIngredientsList(searching: false)
             getDirectionButton.isHidden = true
             ingredientsTableView.isHidden = true
             nameLabel.text = "Sorry, no recipe"
@@ -163,6 +167,17 @@ class RecipeViewController: UIViewController {
     private func toggleIngredientsList(searching: Bool) {
         activityIndicator.isHidden = !searching
         ingredientsTableView.isHidden = searching
+    }
+
+    private func checkFavoriteRecipe() -> Recipe? {
+        for eachRecipe in Recipe.all {
+            if let eachRecipeId = eachRecipe.recipeId {
+                if eachRecipeId == self.recipeId {
+                    return eachRecipe
+                }
+            }
+        }
+        return nil
     }
 
     /*
@@ -214,15 +229,12 @@ extension RecipeViewController {
     }
 }
 
-// TODO:    - sauvegarde de la recette ,
-//          - bloquer la suavegarde de la recette si elle est deja ou la deselectionner
-//          - problème affichage sur l'iphone 8
+// TODO:    - problème affichage sur l'iphone 8
 //          - capitalise recipe name,
 //          - mettre une stack view pour traiter l'erreur sur l'iphone 5
 //          - voir probleme de la shadow sur l'image
 //          - mettre en permanance l'indicateur de scroll sur la table view d'ingredients
 //          - sauvergarder les images dans coredata
 //          - Verifier le modele MVC ( que toutes les données ne soient que dans le Model)
-//          - aller chercher les données dans coredata si elles y sont
-//          - erreur affichage
-//          - mettre des options de tri sur l'entete sur les recettes favorites
+//          - voir pour faire un glissement sur la droite pour les ingredients trop long
+//          - probleme etoile grise au lieu de bleue

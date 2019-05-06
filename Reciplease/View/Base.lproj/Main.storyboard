@@ -558,9 +558,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="216"/>
                                         <color key="color" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="23" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y9O-xR-rfS">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="23" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y9O-xR-rfS">
                                         <rect key="frame" x="0.0" y="0.0" width="349" height="216"/>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="scrollIndicatorInsets" minX="0.0" minY="2" maxX="0.0" maxY="3"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientRecipeTableViewCell" rowHeight="23" id="vIX-0D-WcJ" customClass="IngredientRecipeTableViewCell" customModule="Reciplease" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="349" height="23"/>
@@ -569,8 +570,8 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="349" height="23"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rGB-Xa-wri">
-                                                            <rect key="frame" x="5" y="-2.6666666666666661" width="339" height="28.333333333333329"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGB-Xa-wri">
+                                                            <rect key="frame" x="5" y="3.3333333333333339" width="339" height="16.333333333333329"/>
                                                             <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="14"/>
                                                             <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -613,7 +614,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="prg-VM-L4t">
                                 <rect key="frame" x="5" y="652" width="404" height="30"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Attributions" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zOL-PJ-h3N">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Attributions" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zOL-PJ-h3N">
                                         <rect key="frame" x="2" y="2" width="312" height="26"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                         <nil key="textColor"/>
@@ -664,7 +665,7 @@
                         <viewLayoutGuide key="safeArea" id="A3k-qD-5VB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Reciplease" id="wob-vr-2yh">
-                        <barButtonItem key="rightBarButtonItem" image="star" id="PdZ-6O-feb">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="star" id="PdZ-6O-feb">
                             <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="-4"/>
                             <connections>
                                 <action selector="didTapSaveRecipe:" destination="pgE-Kz-b9V" id="8ld-fI-WAf"/>

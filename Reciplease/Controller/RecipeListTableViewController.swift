@@ -49,7 +49,15 @@ class RecipeListTableViewController: UITableViewController {
         footerRecipeListTableView.isHidden = true
     }
 
-   private func importFavoriteRecipe() -> [RecipeList.Matche] {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if dataToDisplay == .favorite {
+            recipeListToDisplay = importFavoriteRecipe()
+            tableView.reloadData()
+        }
+    }
+
+    private func importFavoriteRecipe() -> [RecipeList.Matche] {
         return Recipe.all.compactMap(RecipeList.Matche.init(with:))
     }
 
@@ -205,5 +213,8 @@ extension RecipeListTableViewController {
 //          - erreur affichage
 //          - refactoriser enum dataToDisplay
 //          - finir le remplissage de listMacth avec recipe
+//          - pas d'ingredients ???
 //          - utiliser NSFetchResultController pour remplir la table view
 //          - Si la liste est vide, laissez un message à l'utilisateur pour lui expliquer comment la remplir
+//          - mettre le nombre de favoris à la place du nombre de matches
+//          - mettre des options de tri sur l'entete sur les recettes favorites

@@ -71,11 +71,8 @@ extension Recipe {
         try container.encode(images, forKey: .images)
 
  //       try container.encode(ingredientsLines, forKey: .ingredientsLines)
-        
 // TODO:    - ingredients line dans coreData
         //  - encode ingredients line
 
-        
-        
     }
 }
