@@ -30,8 +30,6 @@ class IngredientLine: NSManagedObject, Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
 
         line = try values.decode(String?.self, forKey: .line)
-
-        //        ingredientsLines = NSOrderedSet(array: ["premier", "deuxieme", "troisieme"])
     }
 }
 

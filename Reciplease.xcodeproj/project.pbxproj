@@ -18,6 +18,8 @@
 		4F2F0C19225FE92A0045C391 /* CodingUserInfoKey+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F0C18225FE92A0045C391 /* CodingUserInfoKey+Extension.swift */; };
 		4F2F0C1B2261D4280045C391 /* RecipeListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F0C1A2261D4280045C391 /* RecipeListService.swift */; };
 		4F2F0C1D2261DBC50045C391 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2F0C1C2261DBC50045C391 /* RecipeViewController.swift */; };
+		4F302A522280BDD800058D32 /* RecipeListServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F302A512280BDD800058D32 /* RecipeListServiceTestCase.swift */; };
+		4F302A542281AA6600058D32 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F302A532281AA6600058D32 /* NetworkRequest.swift */; };
 		4F32C2072276E83300F6BA6B /* IngredientLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32C2062276E83300F6BA6B /* IngredientLine.swift */; };
 		4F45CE12222EF2ED004246EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F45CE11222EF2ED004246EE /* AppDelegate.swift */; };
 		4F45CE17222EF2ED004246EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F45CE15222EF2ED004246EE /* Main.storyboard */; };
@@ -63,6 +65,8 @@
 		4F2F0C18225FE92A0045C391 /* CodingUserInfoKey+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodingUserInfoKey+Extension.swift"; sourceTree = "<group>"; };
 		4F2F0C1A2261D4280045C391 /* RecipeListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListService.swift; sourceTree = "<group>"; };
 		4F2F0C1C2261DBC50045C391 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
+		4F302A512280BDD800058D32 /* RecipeListServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListServiceTestCase.swift; sourceTree = "<group>"; };
+		4F302A532281AA6600058D32 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		4F32C2062276E83300F6BA6B /* IngredientLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientLine.swift; sourceTree = "<group>"; };
 		4F45CE0E222EF2ED004246EE /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F45CE11222EF2ED004246EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 			children = (
 				4F45CE2B222EF2F0004246EE /* Info.plist */,
 				4F14E5972236983B00A60E11 /* IngredientServiceTestCase.swift */,
+				4F302A512280BDD800058D32 /* RecipeListServiceTestCase.swift */,
 			);
 			path = RecipleaseTests;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 			children = (
 				4F45CE18222EF2ED004246EE /* Reciplease.xcdatamodeld */,
 				4F62A08E226DAFFD00398F02 /* Image.swift */,
+				4F302A532281AA6600058D32 /* NetworkRequest.swift */,
 				4F14E59D22370E8A00A60E11 /* Recipe.swift */,
 				4F32C2062276E83300F6BA6B /* IngredientLine.swift */,
 				4F62A088226CCF4800398F02 /* Source.swift */,
@@ -445,6 +451,7 @@
 				4F45CE42223066BA004246EE /* ServicesKey.swift in Sources */,
 				4F2F0C1B2261D4280045C391 /* RecipeListService.swift in Sources */,
 				4F14E5A02237135A00A60E11 /* RecipeService.swift in Sources */,
+				4F302A542281AA6600058D32 /* NetworkRequest.swift in Sources */,
 				4F62A089226CCF4800398F02 /* Source.swift in Sources */,
 				4F62A08F226DAFFD00398F02 /* Image.swift in Sources */,
 				4F87EB782258D7CD00B6D516 /* RecipeListTableViewCell.swift in Sources */,
@@ -466,6 +473,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F14E5982236983B00A60E11 /* IngredientServiceTestCase.swift in Sources */,
+				4F302A522280BDD800058D32 /* RecipeListServiceTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -234,3 +234,4 @@ extension RecipeListTableViewController {
 //          - refactoriser enum dataToDisplay
 //          - utiliser NSFetchResultController pour remplir la table view
 //          - mettre des options de tri sur l'entete sur les recettes favorites
+//          - gerer les messages d'erreur avec une enum ? et mettre des enum à la place des textes 

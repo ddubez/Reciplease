@@ -15,10 +15,6 @@ class RecipeListService {
     // MARK: - PROPERTIES
     private static let searchRecipeListBaseUrlString = "https://api.yummly.com/v1/api/recipes"
 
-    private var session = URLSession(configuration: .default)
-    init(session: URLSession) {
-        self.session = session
-    }
     static var shared = RecipeListService()
     private init() {}
 
@@ -36,24 +32,31 @@ class RecipeListService {
         RecipeListService.recipeListUrlParameters.updateValue(searchPhrase, forKey: "q")
         RecipeListService.recipeListUrlParameters.updateValue(start, forKey: "start")
 
-        AF.request(RecipeListService.searchRecipeListBaseUrlString,
-                   parameters: RecipeListService.recipeListUrlParameters)
-            .responseDecodable {(response: DataResponse<RecipeList>) in
-                guard let recipeList = response.value else {
-                    callBack(false, nil, nil, "error in JSONDecoder")
-                    return
-                }
+            let getRecipeListRequest: NetworkRequest = AlamofireNetworkRequest()
 
-                guard let recipeListMatches = recipeList.matches else {
-                    callBack(false, nil, nil, "error no matche")
-                    return
-                }
+        getRecipeListRequest.get(url: RecipeListService.searchRecipeListBaseUrlString,
+                                 parameters: RecipeListService.recipeListUrlParameters
+                                ) { (recipeList: RecipeList?, error) in
+            if let error = error {
+                callBack(false, nil, nil, (error as? String)!)
+                return
+            }
+            guard let recipeListGetted = recipeList else {
+                callBack(false, nil, nil, "Error in recipe List")
+                return
+            }
 
-                guard let numberOfResult = recipeList.totalMatchCount else {
-                    return
-                }
+            guard let recipeListMatches = recipeListGetted.matches else {
+                callBack(false, nil, nil, "error no matche")
+                return
+            }
 
-                callBack(true, recipeListMatches, numberOfResult, "")
+            guard let numberOfResult = recipeListGetted.totalMatchCount else {
+                return
+            }
+
+            callBack(true, recipeListMatches, numberOfResult, "")
+
         }
     }
 }

@@ -70,9 +70,6 @@ extension Recipe {
         try container.encode(rating, forKey: .rating)
         try container.encode(images, forKey: .images)
 
- //       try container.encode(ingredientsLines, forKey: .ingredientsLines)
-// TODO:    - ingredients line dans coreData
-        //  - encode ingredients line
-
     }
 }
+// TODO:    - encode ingredients line

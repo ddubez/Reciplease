@@ -12,7 +12,8 @@ import XCTest
 class IngredientServiceTestCase: XCTestCase {
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        super.setUp()
+        IngredientService.shared.clear()
     }
 
     override func tearDown() {
@@ -34,5 +35,25 @@ class IngredientServiceTestCase: XCTestCase {
         IngredientService.shared.clear()
 
         XCTAssertEqual(IngredientService.shared.ingredients, [])
+    }
+
+    func testGivenIngredientsAreSugarSaltPepper_WhenRemoveAtOne_ThenIngredientsShouldBeSugarSalt() {
+        IngredientService.shared.add(ingredient: "Sugar")
+        IngredientService.shared.add(ingredient: "Salt")
+        IngredientService.shared.add(ingredient: "Pepper")
+
+        IngredientService.shared.removeIngredient(at: 1)
+
+        XCTAssertEqual(IngredientService.shared.ingredients, ["Sugar", "Pepper"])
+    }
+
+    func testGivenIngredientsAreSugarSaltPepper_WhenSetSearchList_ThenSearchListShouldBeCorrect() {
+        IngredientService.shared.add(ingredient: "Sugar")
+        IngredientService.shared.add(ingredient: "Salt")
+        IngredientService.shared.add(ingredient: "Pepper")
+
+        IngredientService.shared.setSearchList()
+
+        XCTAssertEqual(IngredientService.shared.searchList, "+Sugar+Salt+Pepper")
     }
 }

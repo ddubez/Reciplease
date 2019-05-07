@@ -32,12 +32,6 @@ class RecipeService {
     func getRecipe(recipeId: String, callBack: @escaping (Bool, Recipe?, String) -> Void) {
         let getRecipeUrlString = RecipeService.getRecipeBaseUrlString + recipeId
 
-//        AF.request(getRecipeUrlString).responseDecodable {(response: DataResponse<Recipe>) in
-//                guard let recipe = response.value else {
-//                    callBack(false, nil, "error in JSONDecoder")
-//                    return
-//                }
-
         AF.request(getRecipeUrlString, parameters: RecipeService.recipeUrlParameters).responseData { response in
             guard let data = response.result.value else {
                 callBack(false, nil, "error in JSONDecoder")
