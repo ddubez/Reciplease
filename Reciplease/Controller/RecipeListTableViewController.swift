@@ -147,7 +147,9 @@ class RecipeListTableViewController: UITableViewController {
 
                 self.tableView.reloadData()
             } else {
-                self.displayAlert(with: error)
+                if let error = error {
+                    self.displayAlert(with: error.message)
+                }
             }
         }
     }

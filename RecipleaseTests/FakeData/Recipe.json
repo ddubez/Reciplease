@@ -1,0 +1,53 @@
+{
+    "yield": "yield: 1 1/2 to 2 dozen southern hush puppies.",
+    "nutritionEstimates": [],
+    "totalTime": "35 min",
+    "images": [
+        {
+            "hostedSmallUrl": "https://lh3.googleusercontent.com/oJ1g4HHQt-v-e0vsbqRgLpFvIXYgOUoMULyVQGaKTkwdyu-sSYpDvJxjtyi2NlJYFUt1NTjEmmYuuthqnQXRfw=s90",
+            "hostedMediumUrl": "https://lh3.googleusercontent.com/oJ1g4HHQt-v-e0vsbqRgLpFvIXYgOUoMULyVQGaKTkwdyu-sSYpDvJxjtyi2NlJYFUt1NTjEmmYuuthqnQXRfw=s180",
+            "hostedLargeUrl": "https://lh3.googleusercontent.com/oJ1g4HHQt-v-e0vsbqRgLpFvIXYgOUoMULyVQGaKTkwdyu-sSYpDvJxjtyi2NlJYFUt1NTjEmmYuuthqnQXRfw=s360",
+            "imageUrlsBySize": {
+                "90": "https://lh3.googleusercontent.com/k1nyuKImZ6f3ti74XWnrKXYlbUuPGggJc-hcGDgOb3ULR2SzuWMAfQUSwqHT3gLxA2yvRuzHbSD2YdzMKOJA=s90-c",
+                "360": "https://lh3.googleusercontent.com/k1nyuKImZ6f3ti74XWnrKXYlbUuPGggJc-hcGDgOb3ULR2SzuWMAfQUSwqHT3gLxA2yvRuzHbSD2YdzMKOJA=s360-c"
+            }
+        }
+    ],
+    "name": "Southern Hush Puppies",
+    "source": {
+        "sourceDisplayName": "The Pudge Factor",
+        "sourceSiteUrl": "pudgefactor.com",
+        "sourceRecipeUrl": "https://pudgefactor.com/southern-hush-puppies/"
+    },
+    "id": "Southern-Hush-Puppies-2583358",
+    "ingredientLines": [
+        "1 1/2 cups yellow cornmeal",
+        "3/4 cups (3.75 ounces) all purpose flour",
+        "1 1/2 Tablespoons granulated sugar",
+        "2 teaspoons baking powder",
+        "1 teaspoon Kosher salt",
+        "3/4 cup diced sweet onion (about 1/2 medium onion)",
+        "1 large egg, lightly beaten",
+        "1 1/4 cups buttermilk",
+        "Peanut oil for frying (See Note 1)"
+    ],
+    "attribution": {
+        "html": "<a href='http://www.yummly.co/recipe/Southern-Hush-Puppies-2583358'>Southern Hush Puppies recipe</a> information powered by <img alt='Yummly' src='https://static.yummly.co/api-logo.png'/>",
+        "url": "http://www.yummly.co/recipe/Southern-Hush-Puppies-2583358",
+        "text": "Southern Hush Puppies recipes: information powered by Yummly",
+        "logo": "https://static.yummly.co/api-logo.png"
+    },
+    "numberOfServings": 1,
+    "totalTimeInSeconds": 2100,
+    "attributes": {
+        "cuisine": [
+            "American",
+            "Southern & Soul Food"
+        ],
+        "course": [
+            "Breads"
+        ]
+    },
+    "flavors": {},
+    "rating": 4
+}

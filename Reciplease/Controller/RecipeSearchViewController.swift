@@ -81,7 +81,9 @@ class RecipeSearchViewController: UIViewController {
                 self.numberOfResult = numberOfResult
                 self.performSegue(withIdentifier: "segueToRecipeList", sender: nil)
             } else {
-                self.displayAlert(with: error)
+                if let error = error {
+                    self.displayAlert(with: error.message)
+                }
             }
         }
     }
