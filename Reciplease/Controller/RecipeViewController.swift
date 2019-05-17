@@ -73,7 +73,9 @@ class RecipeViewController: UIViewController {
                     self.recipe = recipeGetted
                     self.setRecipeDisplay(displayState: .loaded)
                 } else {
-                    self.displayAlert(with: error)
+                    if let error = error {
+                        self.displayAlert(with: error.message)
+                    }
                     self.setRecipeDisplay(displayState: .error)
                 }
             }

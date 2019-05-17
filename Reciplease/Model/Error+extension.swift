@@ -13,6 +13,12 @@ import Foundation
  */
 extension Error {
     var message: String {
+        if let errorType = self as? NRError {
+            switch errorType {
+            case .noData:
+                return "There is no data in the API response !"
+            }
+        }
         if let errorType = self as? RecipeListService.RLSError {
             switch errorType {
             case .noRecipeList:
@@ -23,10 +29,16 @@ extension Error {
                 return "There is no match count in the list of recipe of the API response !"
             }
         }
-        if let errorType = self as? NRError {
+        if let errorType = self as? RecipeService.RSError {
             switch errorType {
-            case .noData:
-                return "There is no data in the API response !"
+            case .noRecipe:
+                return "There is no recipe in the API response !"
+            }
+        }
+        if let errorType = self as? RecipeImageService.RISError {
+            switch errorType {
+            case .noImage:
+                return "There is no image in the API response !"
             }
         } else {
             return "Error !"

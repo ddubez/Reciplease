@@ -15,12 +15,13 @@ class RecipeService {
     // MARK: - PROPERTIES
     private static let getRecipeBaseUrlString = "https://api.yummly.com/v1/api/recipe/"
 
-    private var session = URLSession(configuration: .default)
-    init(session: URLSession) {
-        self.session = session
-    }
     static var shared = RecipeService()
     private init() {}
+
+    private var recipeRequest: NetworkRequest = AlamofireNetworkRequest()
+    init(recipeRequest: NetworkRequest) {
+        self.recipeRequest = recipeRequest
+    }
 
     private static var recipeUrlParameters: Parameters = [
             "_app_key": ServicesKey.yummlyApiKey,
@@ -29,27 +30,33 @@ class RecipeService {
 
     // MARK: - FUNCTIONS
 
-    func getRecipe(recipeId: String, callBack: @escaping (Bool, Recipe?, String) -> Void) {
+    func getRecipe(recipeId: String, callBack: @escaping (Bool, Recipe?, Error?) -> Void) {
         let getRecipeUrlString = RecipeService.getRecipeBaseUrlString + recipeId
 
-        AF.request(getRecipeUrlString, parameters: RecipeService.recipeUrlParameters).responseData { response in
-            guard let data = response.result.value else {
-                callBack(false, nil, "error in JSONDecoder")
+        recipeRequest.get(url: getRecipeUrlString,
+                          parameters: RecipeService.recipeUrlParameters) { (recipeGetted: Recipe?, error) in
+            if let error = error {
+                callBack(false, nil, error)
                 return
             }
-
-            let decoder = JSONDecoder()
-            decoder.userInfo[CodingUserInfoKey.context!] = AppDelegate.viewContext
-
-            do {
-                let recipe = try decoder.decode(Recipe.self, from: data)
-                callBack(true, recipe, "")
-            } catch {
-                callBack(false, nil, "error parsing recipe")
+            guard let recipe = recipeGetted else {
+                callBack(false, nil, RSError.noRecipe)
+                return
             }
+            callBack(true, recipe, nil)
         }
     }
 }
-// TODO:    - Tests à faire
-//          - gerer les erreur dans la reception du JSON : ajouter les proprietés
-//          dans Recipe pour traiter les erreurs
+
+extension RecipeService {
+    /**
+     'RSError' is the error type returned by RecipeService.
+     It encompasses a few different types of errors, each with
+     their own associated reasons.
+     
+     - noRecipe: return when there is no recipe return in get request
+     */
+    enum RSError: Error {
+        case noRecipe
+    }
+}

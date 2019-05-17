@@ -72,7 +72,8 @@ extension RecipeListService {
      their own associated reasons.
      
      - noRecipeList: return when there is no recipe list return in get request
-     - noMatche: return when there is no match in recipe list
+     - noMatch: return when there is no match in recipe list
+     - noMatchCount: return when there is no totalMatchCount in recipe List
      */
     enum RLSError: Error {
         case noRecipeList
