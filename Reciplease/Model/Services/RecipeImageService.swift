@@ -44,5 +44,3 @@ extension RecipeImageService {
         case noImage
     }
 }
-
-// TODO: Tests à faire

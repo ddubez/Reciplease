@@ -26,13 +26,15 @@ class RecipeViewController: UIViewController {
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var preparationTimeLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
-    @IBOutlet weak var ingredientsTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var getDirectionButton: UIButton!
     @IBOutlet weak var attributionLabel: UILabel!
+    @IBOutlet weak var attributionUrl: UILabel!
     @IBOutlet weak var attributionImage: UIImageView!
-
+    @IBOutlet weak var ingredientsStackView: UIStackView!
+    @IBOutlet weak var attributionsStackView: UIStackView!
+    
     // MARK: - ACTIONS
     @IBAction func didTapSaveRecipe(_ sender: UIBarButtonItem) {
         if saveButton.image == UIImage(named: "selectedStar"), let recipeToDelete = recipe {
@@ -80,6 +82,10 @@ class RecipeViewController: UIViewController {
                 }
             }
         }
+
+        // Gesture recognizer for open browser on the attribution url
+        let attributionsGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(openUrlRecipeAttribution))
+        self.attributionsStackView.addGestureRecognizer(attributionsGestureRecognizer)
     }
 
     private func setImageBox() {
@@ -121,6 +127,9 @@ class RecipeViewController: UIViewController {
             if let attributionText = recipe.attribution?.attributionText {
                 attributionLabel.text = attributionText
             }
+            if let attributionTextUrl = recipe.attribution?.attributionUrl {
+                attributionUrl.text = attributionTextUrl
+            }
             if let attributionImageUrl = recipe.attribution?.attributionLogo {
                 getImageForAttributionLogo(from: attributionImageUrl)
             }
@@ -128,11 +137,21 @@ class RecipeViewController: UIViewController {
             if let imagesRecipeUrl = recipe.images?.hostedLargeUrl {
                 getImageForRecipe(from: imagesRecipeUrl)
             }
+            guard let ingredientLines = recipe.ingredientLines else {
+                return
+            }
+            for ingredientLine in ingredientLines {
+                if let ingredientLine = ingredientLine as? IngredientLine {
+                    if let ingredient = ingredientLine.line {
+                        createNewIngredientLine(name: ingredient)
+                    }
+                }
+            }
 
         case .error:
             toggleIngredientsList(searching: false)
             getDirectionButton.isHidden = true
-            ingredientsTableView.isHidden = true
+            ingredientsStackView.isHidden = true
             nameLabel.text = "Sorry, no recipe"
             recipeImage.image = UIImage(named: "defaultPhoto")
             preparationTimeLabel.text = "?"
@@ -168,7 +187,7 @@ class RecipeViewController: UIViewController {
 
     private func toggleIngredientsList(searching: Bool) {
         activityIndicator.isHidden = !searching
-        ingredientsTableView.isHidden = searching
+        ingredientsStackView.isHidden = searching
     }
 
     private func checkFavoriteRecipe() -> Recipe? {
@@ -182,43 +201,20 @@ class RecipeViewController: UIViewController {
         return nil
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-}
-// MARK: - TABLEVIEW
-extension RecipeViewController: UITableViewDataSource, UITableViewDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        guard let recipeIngredientsLines = recipe?.ingredientLines else {
-            return 1
-        }
-        return recipeIngredientsLines.count
+    private func createNewIngredientLine(name: String) {
+        let ingredientLabel = UILabel()
+        ingredientLabel.text = "    - " + name
+        ingredientLabel.numberOfLines = 0
+        ingredientLabel.textColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)
+        ingredientLabel.font = UIFont(name: "GloriaHallelujah", size: 14)
+        ingredientsStackView.addArrangedSubview(ingredientLabel)
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "IngredientRecipeTableViewCell",
-                                                       for: indexPath) as? IngredientRecipeTableViewCell else {
-                                                        return UITableViewCell()
+    @objc func openUrlRecipeAttribution() {
+        if let urlAttributionString = attributionUrl.text {
+        guard let urlAttribution = URL(string: urlAttributionString) else { return }
+        UIApplication.shared.open(urlAttribution)
         }
-        guard let recipeIngredientsLines = recipe?.ingredientLines else {
-            return UITableViewCell()
-        }
-
-        if let ingredientLine = recipeIngredientsLines.object(at: indexPath.row) as? IngredientLine {
-            if let ingredient = ingredientLine.line {
-                cell.configure(withTitle: ingredient) }
-            }
-        return cell
     }
 }
 
@@ -231,9 +227,7 @@ extension RecipeViewController {
     }
 }
 
-// TODO:    - problème affichage sur les autres Iphones : faire une scroll view pour tout voir
-//          - mettre en permanance l'indicateur de scroll sur la table view d'ingredients
-//          - sauvergarder les images dans coredata
+// TODO:    - sauvergarder les images dans coredata
 //          - Verifier le modele MVC ( que toutes les données ne soient que dans le Model)
-//          - voir pour faire un glissement sur la droite pour les ingredients trop long
-//          - probleme etoile grise au lieu de bleue
+//          - Erreur sur l'autoLayout pendant l'exécution ??
+//          - Bad request sur url des attributions

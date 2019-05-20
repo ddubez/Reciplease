@@ -156,5 +156,6 @@ extension RecipeSearchViewController {
     }
 }
 
-// TODO:    - message alerte pas de resultat
+// TODO:    - message si ingredient vide et appuie sur le bouton ajouter
+//          - message alerte pas de resultat
 //          - fenetre des options
