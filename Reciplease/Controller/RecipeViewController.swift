@@ -34,7 +34,7 @@ class RecipeViewController: UIViewController {
     @IBOutlet weak var attributionImage: UIImageView!
     @IBOutlet weak var ingredientsStackView: UIStackView!
     @IBOutlet weak var attributionsStackView: UIStackView!
-    
+
     // MARK: - ACTIONS
     @IBAction func didTapSaveRecipe(_ sender: UIBarButtonItem) {
         if saveButton.image == UIImage(named: "selectedStar"), let recipeToDelete = recipe {
