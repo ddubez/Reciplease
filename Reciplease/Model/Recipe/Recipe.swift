@@ -12,14 +12,6 @@ import CoreData
 class Recipe: NSManagedObject, Codable {
 // creation of structure like JSON model response
 
-    static var all: [Recipe] {
-        let request: NSFetchRequest<Recipe> = Recipe.fetchRequest()
-        guard let recipes = try? AppDelegate.viewContext.fetch(request) else {
-            return []
-        }
-        return recipes
-    }
-
     enum CodingKeys: String, CodingKey {
         case recipeId = "id"
         case name, source, attribution, totalTimeInSeconds, rating, images, ingredientLines

@@ -21,39 +21,51 @@ class IngredientServiceTestCase: XCTestCase {
     }
 
     func testGivenIngredientsIsEmpty_WhenAddIngredientSugar_ThenIngredientsShouldBeSugar() {
+        // Given
         let ingredient = "Sugar"
 
+        // When
         IngredientService.shared.add(ingredient: ingredient)
 
+        // Then
         XCTAssertEqual(IngredientService.shared.ingredients, ["Sugar"])
     }
 
     func testGivenIngredientsIsSugar_WhenClearIngredient_ThenIngredientsShouldBeEmpty() {
+        // Given
         let ingredient = "Sugar"
         IngredientService.shared.add(ingredient: ingredient)
 
+        // When
         IngredientService.shared.clear()
 
+        // Then
         XCTAssertEqual(IngredientService.shared.ingredients, [])
     }
 
     func testGivenIngredientsAreSugarSaltPepper_WhenRemoveAtOne_ThenIngredientsShouldBeSugarSalt() {
+        // Given
         IngredientService.shared.add(ingredient: "Sugar")
         IngredientService.shared.add(ingredient: "Salt")
         IngredientService.shared.add(ingredient: "Pepper")
 
+        // When
         IngredientService.shared.removeIngredient(at: 1)
 
+        // Then
         XCTAssertEqual(IngredientService.shared.ingredients, ["Sugar", "Pepper"])
     }
 
     func testGivenIngredientsAreSugarSaltPepper_WhenSetSearchList_ThenSearchListShouldBeCorrect() {
+        // Given
         IngredientService.shared.add(ingredient: "Sugar")
         IngredientService.shared.add(ingredient: "Salt")
         IngredientService.shared.add(ingredient: "Pepper")
 
+        // When
         IngredientService.shared.setSearchList()
 
+        // Then
         XCTAssertEqual(IngredientService.shared.searchList, "+Sugar+Salt+Pepper")
     }
 }

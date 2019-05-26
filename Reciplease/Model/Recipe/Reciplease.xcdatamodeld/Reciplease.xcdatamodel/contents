@@ -37,8 +37,8 @@
     <elements>
         <element name="Attribution" positionX="-3091.90234375" positionY="-1724.13671875" width="128" height="118"/>
         <element name="Image" positionX="-3505.265625" positionY="-1727.56640625" width="128" height="103"/>
+        <element name="IngredientLine" positionX="-3489.17578125" positionY="-1515.38671875" width="128" height="73"/>
         <element name="Recipe" positionX="-3294.73828125" positionY="-1717.8046875" width="128" height="178"/>
         <element name="Source" positionX="-3089.57421875" positionY="-1565.41015625" width="128" height="103"/>
-        <element name="IngredientLine" positionX="-3489.17578125" positionY="-1515.38671875" width="128" height="73"/>
     </elements>
 </model>

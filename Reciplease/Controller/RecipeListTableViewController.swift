@@ -19,6 +19,8 @@ class RecipeListTableViewController: UITableViewController {
     var isLoadingMore = false
     var dataToDisplay = DataToDisplay.search
 
+    let recipeStorageManager = RecipeStorageManager()
+
     enum DataToDisplay {
         case search, favorite
     }
@@ -68,7 +70,7 @@ class RecipeListTableViewController: UITableViewController {
     }
 
     private func importFavoriteRecipe() -> [RecipeList.Matche] {
-        return Recipe.all.compactMap(RecipeList.Matche.init(with:))
+        return recipeStorageManager.fetchAllStored().compactMap(RecipeList.Matche.init(with:))
     }
 
     // MARK: - Table view data source
@@ -231,8 +233,9 @@ extension RecipeListTableViewController {
         self.present(alert, animated: true, completion: nil)
     }
 }
-// TODO:
-//          - Refactoriser
+// TODO:    -Modifier pour le RecipeStorageManager
+
+// TODO:    - Refactoriser
 //          - refactoriser enum dataToDisplay
 //          - utiliser NSFetchResultController pour remplir la table view
 //          - mettre des options de tri sur l'entete sur les recettes favorites

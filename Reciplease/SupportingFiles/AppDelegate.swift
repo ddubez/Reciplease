@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          error conditions that could cause the creation of the store to fail.
         */
         let container = NSPersistentContainer(name: "Reciplease")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate.
@@ -101,3 +101,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 }
+// TODO:    - est ce qu'il faut que je sorte le static persistantcontainer et le viewcontext
