@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  Reciplease
+
+  Created by David Dubez on 27/05/2019.
+  Copyright © 2019 David Dubez. All rights reserved.
+*/
+
+//Error Messages
+"Error!" = "Erreur!";
+"There is no data in the API response !" = "Il n'y a pas de données dans la réponse de l'API !";
+"There is no list of recipe in the API response !" = "Il n'y a pas de liste de recette dans la réponse de l'API !";
+"There is no match in the list of recipe of the API response !" = "Il n'y a pas de correspondance dans la liste de recette dans la réponse de l'API !";
+"There is no match count in the list of recipe of the API response !" = "Il n'y a pas de nombre de correspondance dans la liste de recette dans la réponse de l'API !";
+"There is no recipe in the API response !" = "Il n'y a pas de recette dans la réponse de l'API !";
+"There is no image in the API response !" = "Il n'y a pas d'image dans la réponse de l'API !";
+"Failed to insert new object in storage !" = "Echec à l'insertion un nouvel objet en mémoire !";
+"Failed to save recipe !" = "Echec à la sauvegarde de la recette !";
+"Error !" = "Erreur !";
+
+// RecipeListTableViewController
+"Total matches : " = "Correspondances : ";
+"Number of favorites : " = "Nombre Favoris : ";
+"sorry, you don't have favorite recipe !" = "désolé, vous n'avez pas de favoris !";
+"you can save a recipe by tapping the star" = "vous pouvez en sauvegarder en appuyant sur l'étoile";
+"on the upper right of search result screen !" = "située en haut à droite de l'écran de résultat !";
+
+// RecipeViewController
+"Loading ... " = "Chargement... ";
+"Sorry, no recipe" = "Désolé, pas de recette";

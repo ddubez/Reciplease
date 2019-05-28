@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  Reciplease
+
+  Created by David Dubez on 27/05/2019.
+  Copyright © 2019 David Dubez. All rights reserved.
+*/
+
+//Error Messages
+"Error!" = "Error!";
+"There is no data in the API response !" = "There is no data in the API response !";
+"There is no list of recipe in the API response !" = "There is no list of recipe in the API response !";
+"There is no match in the list of recipe of the API response !" = "There is no match in the list of recipe of the API response !";
+"There is no match count in the list of recipe of the API response !" = "There is no match count in the list of recipe of the API response !";
+"There is no recipe in the API response !" = "There is no recipe in the API response !";
+"There is no image in the API response !" = "There is no image in the API response !";
+"Failed to insert new object in storage !" = "Failed to insert new object in storage !";
+"Failed to save recipe !" = "Failed to save recipe !";
+"Error !" = "Error !";
+
+// RecipeListTableViewController
+"Total matches : " = "Total matches : ";
+"Number of favorites : " = "Number of favorites : ";
+"sorry, you don't have favorite recipe !" = "sorry, you don't have favorite recipe !";
+"you can save a recipe by tapping the star" = "you can save a recipe by tapping the star";
+"on the upper right of search result screen !" = "on the upper right of search result screen !";
+
+// RecipeViewController
+"Loading ... " = "Loading ... ";
+"Sorry, no recipe" = "Sorry, no recipe";

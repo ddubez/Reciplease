@@ -30,6 +30,7 @@
 		4F45CE42223066BA004246EE /* ServicesKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F45CE41223066BA004246EE /* ServicesKey.swift */; };
 		4F45CE4822331C15004246EE /* GloriaHallelujah.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F45CE4722331C15004246EE /* GloriaHallelujah.ttf */; };
 		4F45CE4A22332965004246EE /* RecipeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F45CE4922332965004246EE /* RecipeSearchViewController.swift */; };
+		4F505E1C229C88A700F35E28 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F505E1E229C88A700F35E28 /* Localizable.strings */; };
 		4F62A089226CCF4800398F02 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F62A088226CCF4800398F02 /* Source.swift */; };
 		4F62A08B226D158F00398F02 /* Attribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F62A08A226D158F00398F02 /* Attribution.swift */; };
 		4F62A08F226DAFFD00398F02 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F62A08E226DAFFD00398F02 /* Image.swift */; };
@@ -92,6 +93,10 @@
 		4F45CE41223066BA004246EE /* ServicesKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesKey.swift; sourceTree = "<group>"; };
 		4F45CE4722331C15004246EE /* GloriaHallelujah.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GloriaHallelujah.ttf; sourceTree = "<group>"; };
 		4F45CE4922332965004246EE /* RecipeSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchViewController.swift; sourceTree = "<group>"; };
+		4F505E18229C834200F35E28 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		4F505E19229C834200F35E28 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		4F505E1D229C88A700F35E28 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4F505E1F229C88BC00F35E28 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4F62A088226CCF4800398F02 /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 		4F62A08A226D158F00398F02 /* Attribution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attribution.swift; sourceTree = "<group>"; };
 		4F62A08E226DAFFD00398F02 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -184,6 +189,7 @@
 				4F7FA9792284AC320081B0CD /* Services */,
 				4F7FA9782284ABE50081B0CD /* Recipe */,
 				4F302A532281AA6600058D32 /* NetworkRequest.swift */,
+				4F505E1E229C88A700F35E28 /* Localizable.strings */,
 				4F2F0C18225FE92A0045C391 /* CodingUserInfoKey+Extension.swift */,
 				4F7FA97B228AFA6B0081B0CD /* Error+extension.swift */,
 			);
@@ -362,6 +368,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 4F45CE05222EF2ED004246EE;
 			productRefGroup = 4F45CE0F222EF2ED004246EE /* Products */;
@@ -380,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F45CE40222EF5A6004246EE /* .gitignore in Resources */,
+				4F505E1C229C88A700F35E28 /* Localizable.strings in Resources */,
 				4F45CE1F222EF2F0004246EE /* LaunchScreen.storyboard in Resources */,
 				4F45CE4822331C15004246EE /* GloriaHallelujah.ttf in Resources */,
 				4F45CE1C222EF2F0004246EE /* Assets.xcassets in Resources */,
@@ -568,6 +576,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				4F45CE16222EF2ED004246EE /* Base */,
+				4F505E18229C834200F35E28 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -576,8 +585,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				4F45CE1E222EF2F0004246EE /* Base */,
+				4F505E19229C834200F35E28 /* fr */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4F505E1E229C88A700F35E28 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F505E1D229C88A700F35E28 /* en */,
+				4F505E1F229C88BC00F35E28 /* fr */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -587,6 +606,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -648,6 +668,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

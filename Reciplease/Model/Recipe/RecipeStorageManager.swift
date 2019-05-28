@@ -31,27 +31,30 @@ class RecipeStorageManager {
     }()
 
     // MARK: - CRUD
-    @discardableResult func insertRecipe( recipeToInsert: Recipe) -> Recipe? {
+    @discardableResult func insertRecipe( recipeToInsert: Recipe) -> (Recipe?, Error?) {
         //Create new newObject to be inserted
         guard let recipe = NSEntityDescription.insertNewObject(forEntityName: "Recipe",
                                                                into: backgroundContext) as? Recipe else {
-                                                                return nil }
+                                                                return (nil, RSMError.cantInsertObject)
+        }
         guard let source = NSEntityDescription.insertNewObject(forEntityName: "Source",
                                                                into: backgroundContext) as? Source else {
                                                                 backgroundContext.delete(recipe)
-                                                                return nil }
+                                                                return (nil, RSMError.cantInsertObject)
+        }
         guard let image = NSEntityDescription.insertNewObject(forEntityName: "Image",
                                                               into: backgroundContext) as? Image else {
                                                                 backgroundContext.delete(source)
                                                                 backgroundContext.delete(recipe)
-                                                                return nil }
+                                                                return (nil, RSMError.cantInsertObject)
+        }
         guard let attribution = NSEntityDescription.insertNewObject(forEntityName: "Attribution",
                                                                     into: backgroundContext) as? Attribution else {
-                                                                
                                                                 backgroundContext.delete(image)
                                                                 backgroundContext.delete(source)
                                                                 backgroundContext.delete(recipe)
-                                                                return nil }
+                                                                return (nil, RSMError.cantInsertObject)
+        }
 
         //set recipe to insert attributes
         recipe.imageForList = recipeToInsert.imageForList
@@ -92,7 +95,7 @@ class RecipeStorageManager {
         }
         recipe.ingredientLines = NSOrderedSet(array: arrayOfIngredientLine)
 
-        return recipe
+        return (recipe, nil)
     }
 
     func fetchAll() -> [Recipe] {
@@ -141,5 +144,19 @@ class RecipeStorageManager {
         //Remove the object
         let obj = backgroundContext.object(with: objectID)
         backgroundContext.delete(obj)
+    }
+}
+
+extension RecipeStorageManager {
+    /**
+     'RSMError' is the error type returned by RecipeStorageManager.
+     It encompasses a few different types of errors, each with
+     their own associated reasons.
+     
+     -  cantInsertObject: return when creating new object in backgroundContext failed
+     */
+    enum RSMError: Error {
+        case cantInsertObject
+        case cantSaveContext
     }
 }

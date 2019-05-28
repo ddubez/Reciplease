@@ -43,11 +43,12 @@ class RecipeListTableViewController: UITableViewController {
         switch dataToDisplay {
         case .search:
             recipeListToDisplay = recipeListMatches
-            totalMatchesLabel.text = formatNumberOfResults(with: numberOfResult, title: "Total matches : ")
+            totalMatchesLabel.text = formatNumberOfResults(with: numberOfResult,
+                                                           title: NSLocalizedString("Total matches : ", comment: ""))
         case .favorite:
             recipeListToDisplay = importFavoriteRecipe()
             totalMatchesLabel.text = formatNumberOfResults(with: recipeListToDisplay.count,
-                                                           title: "Number of favorites : ")
+                                                    title: NSLocalizedString("Number of favorites : ", comment: ""))
         }
         footerRecipeListTableView.isHidden = true
     }
@@ -57,14 +58,14 @@ class RecipeListTableViewController: UITableViewController {
         if dataToDisplay == .favorite {
             recipeListToDisplay = importFavoriteRecipe()
             totalMatchesLabel.text = formatNumberOfResults(with: recipeListToDisplay.count,
-                                                           title: "Number of favorites : ")
+                                                    title: NSLocalizedString("Number of favorites : ", comment: ""))
             tableView.reloadData()
             if recipeListToDisplay.count == 0 {
-                displayAlert(with: """
-                                    sorry, you don't have favorite recipe !
-                                    you can save a recipe by tapping the star
-                                    on the upper right of search result screen !
-                                    """)
+                displayAlert(with:
+                    NSLocalizedString("sorry, you don't have favorite recipe !", comment: "") + "\n"
+                        + NSLocalizedString("you can save a recipe by tapping the star", comment: "") + "\n"
+                        + NSLocalizedString("on the upper right of search result screen !", comment: "")
+                    )
             }
         }
     }
@@ -228,15 +229,11 @@ class RecipeListTableViewController: UITableViewController {
 // MARK: - Alert
 extension RecipeListTableViewController {
     func displayAlert(with message: String) {
-        let alert = UIAlertController(title: "Error!", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("Error!", comment: ""),
+                                      message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
 }
-// TODO:    -Modifier pour le RecipeStorageManager
-
 // TODO:    - Refactoriser
 //          - refactoriser enum dataToDisplay
-//          - utiliser NSFetchResultController pour remplir la table view
-//          - mettre des options de tri sur l'entete sur les recettes favorites
-//          - gerer les messages d'erreur avec une enum ? et mettre des enum à la place des textes 

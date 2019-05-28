@@ -125,7 +125,7 @@ class RecipeViewController: UIViewController {
         case .loading:
             toggleIngredientsList(searching: true)
             getDirectionButton.isHidden = true
-            nameLabel.text = "Loading ... "
+            nameLabel.text = NSLocalizedString("Loading ... ", comment: "")
             recipeImage.image = UIImage(named: "defaultPhoto")
             preparationTimeLabel.text = "..."
             ratingLabel.text = "..."
@@ -168,7 +168,7 @@ class RecipeViewController: UIViewController {
             toggleIngredientsList(searching: false)
             getDirectionButton.isHidden = true
             ingredientsStackView.isHidden = true
-            nameLabel.text = "Sorry, no recipe"
+            nameLabel.text = NSLocalizedString("Sorry, no recipe", comment: "")
             recipeImage.image = UIImage(named: "defaultPhoto")
             preparationTimeLabel.text = "?"
             ratingLabel.text = "?"
@@ -226,7 +226,8 @@ class RecipeViewController: UIViewController {
 // MARK: - Alert
 extension RecipeViewController {
     func displayAlert(with message: String) {
-        let alert = UIAlertController(title: "Error!", message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("Error!", comment: ""),
+                                      message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }

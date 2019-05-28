@@ -1,0 +1,84 @@
+
+/* Class = "UILabel"; text = "What's in my fridge ?"; ObjectID = "3Ar-83-2g6"; */
+"3Ar-83-2g6.text" = "Dans mon frigo ?";
+
+/* Class = "UIBarButtonItem"; title = "Back"; ObjectID = "443-wz-CQP"; */
+"443-wz-CQP.title" = "Retour";
+
+/* Class = "UIButton"; normalTitle = "ADD"; ObjectID = "6QH-VK-sMC"; */
+"6QH-VK-sMC.normalTitle" = "ADD";
+
+/* Class = "UILabel"; text = "18"; ObjectID = "6Ui-hQ-SQe"; */
+"6Ui-hQ-SQe.text" = "18";
+
+/* Class = "UILabel"; text = "recipeName"; ObjectID = "7ND-sJ-z64"; */
+"7ND-sJ-z64.text" = "recipeName";
+
+/* Class = "UILabel"; text = "12000"; ObjectID = "9H6-pe-LbU"; */
+"9H6-pe-LbU.text" = "12000";
+
+/* Class = "UITabBarItem"; title = "Item 1"; ObjectID = "BER-z7-GE3"; */
+"BER-z7-GE3.title" = "Item 1";
+
+/* Class = "UITextField"; placeholder = "Lemon, Cheese, ..."; ObjectID = "C6p-Dx-jhS"; */
+"C6p-Dx-jhS.placeholder" = "Lemon, Cheese, ...";
+
+/* Class = "UITabBarItem"; title = "Favorite"; ObjectID = "JgJ-D5-YGh"; */
+"JgJ-D5-YGh.title" = "Favoris";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "PdZ-6O-feb"; */
+"PdZ-6O-feb.title" = "Item";
+
+/* Class = "UILabel"; text = "Recipe Attributions Url"; ObjectID = "QlN-H0-yHA"; */
+"QlN-H0-yHA.text" = "Recipe Attributions Url";
+
+/* Class = "UIButton"; normalTitle = "CLEAR"; ObjectID = "R9E-fI-npw"; */
+"R9E-fI-npw.normalTitle" = "CLEAR";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "RxK-ej-W0i"; */
+"RxK-ej-W0i.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Reciplease"; ObjectID = "VcG-cy-3Re"; */
+"VcG-cy-3Re.title" = "Reciplease";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "XlZ-6N-UXY"; */
+"XlZ-6N-UXY.title" = "Item";
+
+/* Class = "UILabel"; text = "18"; ObjectID = "dCl-qk-KsB"; */
+"dCl-qk-KsB.text" = "18";
+
+/* Class = "UILabel"; text = "10 min"; ObjectID = "df9-Qz-mMN"; */
+"df9-Qz-mMN.text" = "10 min";
+
+/* Class = "UILabel"; text = "SEARCH FOR RECIPES"; ObjectID = "drP-c1-S91"; */
+"drP-c1-S91.text" = "RECHERCHE RECETTES";
+
+/* Class = "UILabel"; text = "10 min"; ObjectID = "eeb-ue-wnv"; */
+"eeb-ue-wnv.text" = "10 min";
+
+/* Class = "UILabel"; text = "  Ingredients :"; ObjectID = "haM-ev-E1z"; */
+"haM-ev-E1z.text" = "  Ingredients :";
+
+/* Class = "UIButton"; normalTitle = "Get Directions"; ObjectID = "iLc-Ug-2R8"; */
+"iLc-Ug-2R8.normalTitle" = "Vers tutorial";
+
+/* Class = "UILabel"; text = "ingredients"; ObjectID = "oMj-Wq-tsO"; */
+"oMj-Wq-tsO.text" = "ingredients";
+
+/* Class = "UILabel"; text = "NAME"; ObjectID = "tHH-EA-GTK"; */
+"tHH-EA-GTK.text" = "NAME";
+
+/* Class = "UINavigationItem"; title = "Reciplease"; ObjectID = "tiB-mq-fVn"; */
+"tiB-mq-fVn.title" = "Reciplease";
+
+/* Class = "UILabel"; text = "My Ingredients :"; ObjectID = "vfn-eU-gl4"; */
+"vfn-eU-gl4.text" = "Mes Ingredients :";
+
+/* Class = "UITabBarItem"; title = "Search"; ObjectID = "wix-fg-BUL"; */
+"wix-fg-BUL.title" = "Search";
+
+/* Class = "UINavigationItem"; title = "Reciplease"; ObjectID = "wob-vr-2yh"; */
+"wob-vr-2yh.title" = "Reciplease";
+
+/* Class = "UILabel"; text = "Recipe Attributions Text"; ObjectID = "zOL-PJ-h3N"; */
+"zOL-PJ-h3N.text" = "Recipe Attributions Text";
