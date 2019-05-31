@@ -47,7 +47,11 @@ extension Error {
             case .cantInsertObject:
                 return NSLocalizedString("Failed to insert new object in storage !", comment: "")
             case .cantSaveContext:
+                return NSLocalizedString("Failed to save context !", comment: "")
+            case .cantSaveRecipe:
                 return NSLocalizedString("Failed to save recipe !", comment: "")
+            case .cantDeleteRecipe:
+                return NSLocalizedString("Failed to delete recipe !", comment: "")
             }
         } else {
             return NSLocalizedString("Error !", comment: "")

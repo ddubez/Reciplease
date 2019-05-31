@@ -57,7 +57,7 @@ class RecipeStorageManagerTestCase: XCTestCase {
         }
 
         // When
-        let fetch = recipeTestStorageManager.fetchAll()
+        let fetch = recipeTestStorageManager.fetchAllStored()
 
         // Then
         XCTAssertEqual(fetch.count, 0)
@@ -74,11 +74,65 @@ class RecipeStorageManagerTestCase: XCTestCase {
 
         // When
         recipeTestStorageManager.insertRecipe(recipeToInsert: recipe)
- //       recipeTestStorageManager.save()
 
         // Then
-        let fetch = recipeTestStorageManager.fetchAll()
+        let fetch = recipeTestStorageManager.fetchAllStored()
         XCTAssertEqual(fetch.count, 1)
+    }
+
+    func testFetchRecipewithCorrectIdShouldReturnRecipe() {
+        // Given
+        guard let recipeTestStorageManager = recipeTestStorageManager else {
+            XCTFail("recipeTestStorageManager is Nil !")
+            return
+        }
+        let recipe = Recipe(context: mockPersistantContainer.viewContext)
+        recipe.name = "new Recipe"
+        recipe.recipeId = "new Recipe ID"
+        recipeTestStorageManager.insertRecipe(recipeToInsert: recipe)
+
+        // When
+        let fetchedRecipe = recipeTestStorageManager.fetchStored(recipeId: "new Recipe ID")
+
+        // Then
+        XCTAssertNotNil(fetchedRecipe)
+        XCTAssertEqual(fetchedRecipe?.recipeId, "new Recipe ID")
+    }
+
+    func testFetchRecipewithWrongIdShouldReturnNil() {
+        // Given
+        guard let recipeTestStorageManager = recipeTestStorageManager else {
+            XCTFail("recipeTestStorageManager is Nil !")
+            return
+        }
+        let recipe = Recipe(context: mockPersistantContainer.viewContext)
+        recipe.name = "new Recipe"
+        recipe.recipeId = "new Recipe ID"
+        recipeTestStorageManager.insertRecipe(recipeToInsert: recipe)
+
+        // When
+        let fetchedRecipe = recipeTestStorageManager.fetchStored(recipeId: "wrong ID")
+
+        // Then
+        XCTAssertNil(fetchedRecipe)
+    }
+
+    func testsaveRecipeShouldReturnNil() {
+        // Given
+        guard let recipeTestStorageManager = recipeTestStorageManager else {
+            XCTFail("recipeTestStorageManager is Nil !")
+            return
+        }
+        let recipe = Recipe(context: mockPersistantContainer.viewContext)
+        recipe.name = "new Recipe"
+        recipe.recipeId = "new Recipe ID"
+        recipeTestStorageManager.insertRecipe(recipeToInsert: recipe)
+
+        // When
+        let fetchedRecipe = recipeTestStorageManager.fetchStored(recipeId: "wrong ID")
+
+        // Then
+        XCTAssertNil(fetchedRecipe)
     }
 
 }

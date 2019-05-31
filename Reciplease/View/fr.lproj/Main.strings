@@ -39,7 +39,7 @@
 "RxK-ej-W0i.text" = "Label";
 
 /* Class = "UINavigationItem"; title = "Reciplease"; ObjectID = "VcG-cy-3Re"; */
-"VcG-cy-3Re.title" = "Reciplease";
+"VcG-cy-3Re.title" = "RecetteSTP";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "XlZ-6N-UXY"; */
 "XlZ-6N-UXY.title" = "Item";
@@ -69,7 +69,7 @@
 "tHH-EA-GTK.text" = "NAME";
 
 /* Class = "UINavigationItem"; title = "Reciplease"; ObjectID = "tiB-mq-fVn"; */
-"tiB-mq-fVn.title" = "Reciplease";
+"tiB-mq-fVn.title" = "RecetteSTP";
 
 /* Class = "UILabel"; text = "My Ingredients :"; ObjectID = "vfn-eU-gl4"; */
 "vfn-eU-gl4.text" = "Mes Ingredients :";
@@ -78,7 +78,7 @@
 "wix-fg-BUL.title" = "Search";
 
 /* Class = "UINavigationItem"; title = "Reciplease"; ObjectID = "wob-vr-2yh"; */
-"wob-vr-2yh.title" = "Reciplease";
+"wob-vr-2yh.title" = "RecetteSTP";
 
 /* Class = "UILabel"; text = "Recipe Attributions Text"; ObjectID = "zOL-PJ-h3N"; */
 "zOL-PJ-h3N.text" = "Recipe Attributions Text";

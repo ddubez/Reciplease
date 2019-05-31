@@ -31,6 +31,7 @@
 		4F45CE4822331C15004246EE /* GloriaHallelujah.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F45CE4722331C15004246EE /* GloriaHallelujah.ttf */; };
 		4F45CE4A22332965004246EE /* RecipeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F45CE4922332965004246EE /* RecipeSearchViewController.swift */; };
 		4F505E1C229C88A700F35E28 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F505E1E229C88A700F35E28 /* Localizable.strings */; };
+		4F505E22229D1E4100F35E28 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F505E24229D1E4100F35E28 /* InfoPlist.strings */; };
 		4F62A089226CCF4800398F02 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F62A088226CCF4800398F02 /* Source.swift */; };
 		4F62A08B226D158F00398F02 /* Attribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F62A08A226D158F00398F02 /* Attribution.swift */; };
 		4F62A08F226DAFFD00398F02 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F62A08E226DAFFD00398F02 /* Image.swift */; };
@@ -97,6 +98,8 @@
 		4F505E19229C834200F35E28 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4F505E1D229C88A700F35E28 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4F505E1F229C88BC00F35E28 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4F505E23229D1E4100F35E28 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4F505E25229D1E4600F35E28 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4F62A088226CCF4800398F02 /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 		4F62A08A226D158F00398F02 /* Attribution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attribution.swift; sourceTree = "<group>"; };
 		4F62A08E226DAFFD00398F02 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -189,7 +192,6 @@
 				4F7FA9792284AC320081B0CD /* Services */,
 				4F7FA9782284ABE50081B0CD /* Recipe */,
 				4F302A532281AA6600058D32 /* NetworkRequest.swift */,
-				4F505E1E229C88A700F35E28 /* Localizable.strings */,
 				4F2F0C18225FE92A0045C391 /* CodingUserInfoKey+Extension.swift */,
 				4F7FA97B228AFA6B0081B0CD /* Error+extension.swift */,
 			);
@@ -222,7 +224,9 @@
 			isa = PBXGroup;
 			children = (
 				4F45CE11222EF2ED004246EE /* AppDelegate.swift */,
+				4F505E1E229C88A700F35E28 /* Localizable.strings */,
 				4F45CE41223066BA004246EE /* ServicesKey.swift */,
+				4F505E24229D1E4100F35E28 /* InfoPlist.strings */,
 				4F45CE1B222EF2F0004246EE /* Assets.xcassets */,
 				4F45CE4722331C15004246EE /* GloriaHallelujah.ttf */,
 				4F45CE20222EF2F0004246EE /* Info.plist */,
@@ -387,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F45CE40222EF5A6004246EE /* .gitignore in Resources */,
+				4F505E22229D1E4100F35E28 /* InfoPlist.strings in Resources */,
 				4F505E1C229C88A700F35E28 /* Localizable.strings in Resources */,
 				4F45CE1F222EF2F0004246EE /* LaunchScreen.storyboard in Resources */,
 				4F45CE4822331C15004246EE /* GloriaHallelujah.ttf in Resources */,
@@ -597,6 +602,15 @@
 				4F505E1F229C88BC00F35E28 /* fr */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		4F505E24229D1E4100F35E28 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F505E23229D1E4100F35E28 /* en */,
+				4F505E25229D1E4600F35E28 /* fr */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

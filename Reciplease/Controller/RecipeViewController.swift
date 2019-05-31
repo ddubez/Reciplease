@@ -41,35 +41,25 @@ class RecipeViewController: UIViewController {
     @IBAction func didTapSaveRecipe(_ sender: UIBarButtonItem) {
         if saveButton.image == UIImage(named: "selectedStar"), let recipeToDelete = recipe {
 
-            recipeStorageManager.remove(objectID: recipeToDelete.objectID)
-            recipeStorageManager.save()
-            saveButton.image = UIImage(named: "star")
-            //FIXME: - je recupere pas d'erreur ??
-            //FIXME: - a suprrpimer dessous
-//            AppDelegate.viewContext.delete(recipeToDelete) //FIXME: - tochange
-//
-//            do { try AppDelegate.viewContext.save() //FIXME: - tochange
-//                saveButton.image = UIImage(named: "star")
-//            } catch let error as NSError {
-//                displayAlert(with: "error in deleting recipe ! \(error)")
-//            }
+            do {
+                try recipeStorageManager.removeRecipe(objectID: recipeToDelete.objectID)
+                saveButton.image = UIImage(named: "star")
+            } catch let error {
+                displayAlert(with: error.message)
+            }
 
         } else {
             if let recipeToSave = recipe {
-                recipeStorageManager.insertRecipe(recipeToInsert: recipeToSave)
-                recipeStorageManager.save()
-                saveButton.image = UIImage(named: "selectedStar")
-                
-                //FIXME: - je recupere pas d'erreur ??
-                //FIXME: - a suprrpimer dessous
+                do {
+                    try recipeStorageManager.saveRecipe(recipeToSave)
+                    saveButton.image = UIImage(named: "selectedStar")
+                } catch let error {
+                    displayAlert(with: error.message)
+                }
             }
-//            do { try AppDelegate.viewContext.save()
-//                saveButton.image = UIImage(named: "selectedStar")
-//            } catch let error as NSError {
-//                displayAlert(with: "error in saving recipe ! \(error)")
-//            }
         }
     }
+
     @IBAction func didTapGetDirectionButton(_ sender: UIButton) {
         openUrlRecipe()
     }
