@@ -224,5 +224,5 @@ extension RecipeViewController {
 }
 
 // TODO:    - sauvergarder les images dans coredata
-//          - Verifier le modele MVC ( que toutes les données ne soient que dans le Model)
 //          - Erreur sur l'autoLayout pendant l'exécution ??
+//             - commentaires

@@ -17,7 +17,11 @@ class RecipeImageService {
     init(recipeImageRequest: NetworkRequest) {
         self.recipeImageRequest = recipeImageRequest
     }
-
+    /**
+     Request to get an image from an url
+     - Parameter imageUrl: string of the url image
+     - Parameter completionHandler: Data of the image
+     */
     func getIconImage(imageUrl: String, completionHandler: @escaping ((Data?) -> Void)) {
         recipeImageRequest.getData(dataUrl: imageUrl) { (data, error) in
             if error != nil {

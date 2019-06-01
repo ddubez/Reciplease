@@ -8,6 +8,7 @@
 
 import Foundation
 
+// add a key to pass the context of NSManagedObject
 extension CodingUserInfoKey {
     static let context = CodingUserInfoKey(rawValue: "context")
 }

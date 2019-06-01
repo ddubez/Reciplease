@@ -159,6 +159,6 @@ extension RecipeSearchViewController {
 
 // TODO:    - message si ingredient vide et appuie sur le bouton ajouter
 //          - message alerte pas de resultat
-//          - fenetre des options
-//          - logo de l'appli
+//          - fenetre des options (supprimer le butoon)
+//             - commentaires
 

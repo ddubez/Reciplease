@@ -30,7 +30,12 @@ class RecipeListService {
     ]
 
     // MARK: - FUNCTIONS
-
+    /**
+     Request to get a list of recipe with a list of ingredients
+     - Parameter searchPhrase: string of the ingredients
+     - Parameter start: Int of the first element position of the recipe list in the total of results
+     - Parameter callBack: A bool for success, An array of RecipeList.Matche, Int of the numer of result and an error
+     */
     func getRecipeList(searchPhrase: String, start: Int,
                        callBack: @escaping (Bool, [RecipeList.Matche]?, Int?, Error?) -> Void) {
 

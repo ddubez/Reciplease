@@ -29,7 +29,11 @@ class RecipeService {
             ]
 
     // MARK: - FUNCTIONS
-
+    /**
+     Request to get a recipe with the id of the recipe
+     - Parameter recipeId: string of the id
+     - Parameter callBack: A bool for success, the Recipe and an error
+     */
     func getRecipe(recipeId: String, callBack: @escaping (Bool, Recipe?, Error?) -> Void) {
         let getRecipeUrlString = RecipeService.getRecipeBaseUrlString + recipeId
 

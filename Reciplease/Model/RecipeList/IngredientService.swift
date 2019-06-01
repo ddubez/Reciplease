@@ -9,6 +9,7 @@
 import Foundation
 
 class IngredientService {
+    // Class for store list of ingredients
     static let shared = IngredientService()
     private init() {}
 

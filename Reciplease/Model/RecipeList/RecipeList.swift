@@ -37,6 +37,7 @@ extension RecipeList.Matche {
 
 extension RecipeList.Matche {
     init?(with recipe: Recipe) {
+        //init a RecipeList.Matche with a Recipe instance
         guard let recipeId = recipe.recipeId,
             let recipeName = recipe.name else {
                 return nil
