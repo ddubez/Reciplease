@@ -28,3 +28,7 @@
 // RecipeViewController
 "Loading ... " = "Loading ... ";
 "Sorry, no recipe" = "Sorry, no recipe";
+
+// RecipeSearchViewController
+"Nothing to add !" = "Nothing to add !";
+"Sorry, but there is no recipe !" = "Sorry, but there is no recipe !";

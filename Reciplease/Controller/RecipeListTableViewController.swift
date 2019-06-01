@@ -238,3 +238,4 @@ extension RecipeListTableViewController {
 // TODO:    - Refactoriser
 //          - refactoriser enum dataToDisplay
 //             - commentaires
+//          - traiter l'optionnel à l'entrée

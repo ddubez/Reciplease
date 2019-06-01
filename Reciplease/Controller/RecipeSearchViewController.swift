@@ -41,6 +41,10 @@ class RecipeSearchViewController: UIViewController {
     // MARK: - IBACTIONS
     @IBAction func didTapAddIngredientButton(_ sender: UIButton) {
         guard let ingredient = ingredientTextField.text else {return}
+        if ingredient == "" {
+            displayAlert(with: NSLocalizedString("Nothing to add !", comment: ""))
+            return
+        }
         IngredientService.shared.add(ingredient: ingredient)
         ingredientTextField.text?.removeAll()
         ingredientTextField.resignFirstResponder()
@@ -77,6 +81,10 @@ class RecipeSearchViewController: UIViewController {
             self.toggleActivityIndicator(working: false)
 
             if success == true, let recipeListMatches = recipeListMatches, let numberOfResult = numberOfResult {
+                if numberOfResult == 0 {
+                    self.displayAlert(with: NSLocalizedString("Sorry, but there is no recipe !", comment: ""))
+                    return
+                }
                 self.resultRecipeList = recipeListMatches
                 self.numberOfResult = numberOfResult
                 self.performSegue(withIdentifier: "segueToRecipeList", sender: nil)
@@ -117,7 +125,7 @@ extension RecipeSearchViewController: UITextFieldDelegate {
     }
 }
 
-// MARK: - TABLEVIEW
+// MARK: - TABLEVIEW FOR LIST OF INGREDIENTS
 extension RecipeSearchViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -157,8 +165,5 @@ extension RecipeSearchViewController {
     }
 }
 
-// TODO:    - message si ingredient vide et appuie sur le bouton ajouter
-//          - message alerte pas de resultat
-//          - fenetre des options (supprimer le butoon)
-//             - commentaires
-
+// TODO:    
+//          - passer sur le master

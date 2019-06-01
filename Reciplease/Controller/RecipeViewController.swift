@@ -226,3 +226,4 @@ extension RecipeViewController {
 // TODO:    - sauvergarder les images dans coredata
 //          - Erreur sur l'autoLayout pendant l'exécution ??
 //             - commentaires
+//          - traiter l'optionnel à l'entrée

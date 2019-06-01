@@ -237,7 +237,6 @@
                     <tabBarItem key="tabBarItem" title="Item 1" id="BER-z7-GE3"/>
                     <navigationItem key="navigationItem" title="Reciplease" id="VcG-cy-3Re">
                         <barButtonItem key="backBarButtonItem" title="Back" id="443-wz-CQP"/>
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="XlZ-6N-UXY"/>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="ked-fm-Rbv" id="GEQ-HW-Zh8"/>
