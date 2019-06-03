@@ -11,7 +11,8 @@ import UIKit
 class RecipeViewController: UIViewController {
 
     // MARK: - PROPERTIES
-    var recipeId: String!
+
+    var selectedRecipeId: String?
     var recipe: Recipe?
     var sourceRecipeUrl = ""
     var ifRecipeStored = false
@@ -39,25 +40,7 @@ class RecipeViewController: UIViewController {
 
     // MARK: - ACTIONS
     @IBAction func didTapSaveRecipe(_ sender: UIBarButtonItem) {
-        if saveButton.image == UIImage(named: "selectedStar"), let recipeToDelete = recipe {
-
-            do {
-                try recipeStorageManager.removeRecipe(objectID: recipeToDelete.objectID)
-                saveButton.image = UIImage(named: "star")
-            } catch let error {
-                displayAlert(with: error.message)
-            }
-
-        } else {
-            if let recipeToSave = recipe {
-                do {
-                    try recipeStorageManager.saveRecipe(recipeToSave)
-                    saveButton.image = UIImage(named: "selectedStar")
-                } catch let error {
-                    displayAlert(with: error.message)
-                }
-            }
-        }
+        saveOrDeleteRecipe()
     }
 
     @IBAction func didTapGetDirectionButton(_ sender: UIButton) {
@@ -70,6 +53,20 @@ class RecipeViewController: UIViewController {
         setImageBox()
         setRecipeDisplay(displayState: .loading)
 
+        if let recipeId = selectedRecipeId {
+            setSelectedRecipe(from: recipeId)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+
+        // Gesture recognizer for open browser on the attribution url
+        let attributionsGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                                   action: #selector(openUrlRecipeAttribution))
+        self.attributionsStackView.addGestureRecognizer(attributionsGestureRecognizer)
+    }
+
+    private func setSelectedRecipe(from recipeId: String) {
+        // fetch if recipe is in store and if not get it from API
         if let favoriteRecipe = recipeStorageManager.fetchStored(recipeId: recipeId) {
             saveButton.image = UIImage(named: "selectedStar")
             self.recipe = favoriteRecipe
@@ -87,11 +84,6 @@ class RecipeViewController: UIViewController {
                 }
             }
         }
-
-        // Gesture recognizer for open browser on the attribution url
-        let attributionsGestureRecognizer = UITapGestureRecognizer(target: self,
-                                                                   action: #selector(openUrlRecipeAttribution))
-        self.attributionsStackView.addGestureRecognizer(attributionsGestureRecognizer)
     }
 
     private func setImageBox() {
@@ -123,36 +115,7 @@ class RecipeViewController: UIViewController {
             toggleIngredientsList(searching: false)
             guard let recipe = recipe else { return }
             getDirectionButton.isHidden = false
-            nameLabel.text = recipe.name
-            let totalTimeInMinute = recipe.totalTimeInSeconds / 60
-            preparationTimeLabel.text = String(totalTimeInMinute) + " min"
-            ratingLabel.text = String(recipe.rating)
-            if let sourceRecipeUrlString = recipe.source?.sourceRecipeUrl {
-                sourceRecipeUrl = sourceRecipeUrlString
-            }
-            if let attributionText = recipe.attribution?.attributionText {
-                attributionLabel.text = attributionText
-            }
-            if let attributionTextUrl = recipe.attribution?.attributionUrl {
-                attributionUrl.text = attributionTextUrl
-            }
-            if let attributionImageUrl = recipe.attribution?.attributionLogo {
-                getImageForAttributionLogo(from: attributionImageUrl)
-            }
-
-            if let imagesRecipeUrl = recipe.images?.hostedLargeUrl {
-                getImageForRecipe(from: imagesRecipeUrl)
-            }
-            guard let ingredientLines = recipe.ingredientLines else {
-                return
-            }
-            for ingredientLine in ingredientLines {
-                if let ingredientLine = ingredientLine as? IngredientLine {
-                    if let ingredient = ingredientLine.line {
-                        createNewIngredientLine(name: ingredient)
-                    }
-                }
-            }
+            loadRecipe(recipe)
 
         case .error:
             toggleIngredientsList(searching: false)
@@ -165,13 +128,51 @@ class RecipeViewController: UIViewController {
         }
     }
 
-    private func getImageForRecipe(from: String) {  //FIXME: - voir si on a pas l'image en stock
+    private func loadRecipe(_ recipeToLoad: Recipe) {
+        nameLabel.text = recipeToLoad.name
+        let totalTimeInMinute = recipeToLoad.totalTimeInSeconds / 60
+        preparationTimeLabel.text = String(totalTimeInMinute) + " min"
+        ratingLabel.text = String(recipeToLoad.rating)
+        if let sourceRecipeUrlString = recipeToLoad.source?.sourceRecipeUrl {
+            sourceRecipeUrl = sourceRecipeUrlString
+        }
+        if let attributionText = recipeToLoad.attribution?.attributionText {
+            attributionLabel.text = attributionText
+        }
+        if let attributionTextUrl = recipeToLoad.attribution?.attributionUrl {
+            attributionUrl.text = attributionTextUrl
+        }
+        if let attributionImageUrl = recipeToLoad.attribution?.attributionLogo {
+            getImageForAttributionLogo(from: attributionImageUrl)
+        }
+        if let imageToDisplay = recipeToLoad.imageForList {
+            recipeImage.image = UIImage(data: imageToDisplay)
+        } else if let imagesRecipeUrl = recipeToLoad.images?.hostedLargeUrl {
+            getImageForRecipe(from: imagesRecipeUrl)
+        }
+
+        guard let ingredientLines = recipeToLoad.ingredientLines else {
+            return
+        }
+        for ingredientLine in ingredientLines {
+            if let ingredientLine = ingredientLine as? IngredientLine {
+                if let ingredient = ingredientLine.line {
+                    createNewIngredientLine(name: ingredient)
+                }
+            }
+        }
+    }
+
+    private func getImageForRecipe(from: String) {
         let recipeImageService = RecipeImageService()
         recipeImageService.getIconImage(imageUrl: from, completionHandler: { (data) in
             guard let data = data else {
                 return
             }
             self.recipeImage.image = UIImage(data: data)
+            if let recipe = self.recipe {
+                recipe.imageForList = data
+            }
         })
     }
 
@@ -179,9 +180,10 @@ class RecipeViewController: UIViewController {
         let recipeImageService = RecipeImageService()
         recipeImageService.getIconImage(imageUrl: from, completionHandler: { (data) in
             guard let data = data else {
+                self.attributionImage.isHidden = true
                 return
             }
-            self.attributionImage.image = UIImage(data: data) //FIXME: -image par defaut si fail
+            self.attributionImage.image = UIImage(data: data)
         })
     }
 
@@ -211,6 +213,31 @@ class RecipeViewController: UIViewController {
         UIApplication.shared.open(urlAttribution)
         }
     }
+
+    private func saveOrDeleteRecipe() {
+        if saveButton.image == UIImage(named: "selectedStar"), let recipeToDelete = recipe {
+            // Delete recipe
+            do {
+                if let recipeIdToDelete = recipeToDelete.recipeId {
+                    try recipeStorageManager.deleteRecipe(recipeId: recipeIdToDelete)
+                }
+                saveButton.image = UIImage(named: "star")
+            } catch let error {
+                displayAlert(with: error.message)
+            }
+
+        } else {
+            if let recipeToSave = recipe {
+                // Save recipe
+                do {
+                    try recipeStorageManager.saveRecipe(recipeToSave)
+                    saveButton.image = UIImage(named: "selectedStar")
+                } catch let error {
+                    displayAlert(with: error.message)
+                }
+            }
+        }
+    }
 }
 
 // MARK: - Alert
@@ -222,8 +249,3 @@ extension RecipeViewController {
         self.present(alert, animated: true, completion: nil)
     }
 }
-
-// TODO:    - sauvergarder les images dans coredata
-//          - Erreur sur l'autoLayout pendant l'exécution ??
-//             - commentaires
-//          - traiter l'optionnel à l'entrée

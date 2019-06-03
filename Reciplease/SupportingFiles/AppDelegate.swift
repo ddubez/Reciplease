@@ -101,4 +101,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 }
-// TODO:    - est ce qu'il faut que je sorte le static persistantcontainer et le viewcontext

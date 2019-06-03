@@ -66,7 +66,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxK-ej-W0i">
-                                                    <rect key="frame" x="70" y="0.0" width="205" height="40"/>
+                                                    <rect key="frame" x="70" y="0.0" width="150" height="40"/>
                                                     <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="18"/>
                                                     <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -660,7 +660,7 @@
                                 </constraints>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tHH-EA-GTK">
-                                <rect key="frame" x="159" y="98" width="57.333333333333343" height="23.333333333333329"/>
+                                <rect key="frame" x="0.0" y="98" width="375" height="23.333333333333329"/>
                                 <fontDescription key="fontDescription" name="GloriaHallelujah" family="Gloria Hallelujah" pointSize="20"/>
                                 <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -668,13 +668,14 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94789146769999999" green="0.94331228190000005" blue="0.95247065360000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="X5Q-Lh-T6c" firstAttribute="trailing" secondItem="A3k-qD-5VB" secondAttribute="trailing" id="1k1-sT-STt"/>
                             <constraint firstItem="tHH-EA-GTK" firstAttribute="top" secondItem="A3k-qD-5VB" secondAttribute="top" constant="10" id="8RT-jP-P9S"/>
-                            <constraint firstItem="X5Q-Lh-T6c" firstAttribute="trailing" secondItem="A3k-qD-5VB" secondAttribute="trailing" id="Czz-Q9-1DS"/>
                             <constraint firstItem="X5Q-Lh-T6c" firstAttribute="top" secondItem="tHH-EA-GTK" secondAttribute="bottom" constant="10" id="GRb-fT-rWQ"/>
+                            <constraint firstItem="X5Q-Lh-T6c" firstAttribute="leading" secondItem="A3k-qD-5VB" secondAttribute="leading" id="QrA-ug-WM0"/>
                             <constraint firstItem="A3k-qD-5VB" firstAttribute="bottom" secondItem="X5Q-Lh-T6c" secondAttribute="bottom" id="bdW-FU-qa8"/>
+                            <constraint firstItem="tHH-EA-GTK" firstAttribute="width" secondItem="A3k-qD-5VB" secondAttribute="width" id="cdQ-ST-leH"/>
                             <constraint firstItem="tHH-EA-GTK" firstAttribute="centerX" secondItem="gJz-4R-yey" secondAttribute="centerX" id="el8-HV-Qdf"/>
                             <constraint firstItem="cEx-jf-cJR" firstAttribute="width" secondItem="A3k-qD-5VB" secondAttribute="width" id="fuV-dF-PM0"/>
-                            <constraint firstItem="X5Q-Lh-T6c" firstAttribute="leading" secondItem="A3k-qD-5VB" secondAttribute="leading" id="jBU-cG-Vd9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A3k-qD-5VB"/>
                     </view>

@@ -15,8 +15,12 @@
 "There is no recipe in the API response !" = "Il n'y a pas de recette dans la réponse de l'API !";
 "There is no image in the API response !" = "Il n'y a pas d'image dans la réponse de l'API !";
 "Failed to insert new object in storage !" = "Echec à l'insertion un nouvel objet en mémoire !";
+"Failed to save context !" = "Echec pour sauvegarder le contexte !";
 "Failed to save recipe !" = "Echec à la sauvegarde de la recette !";
+"Failed to delete recipe !" = "Echec à la suppression de la recette  !";
+"Failed to find recipe to delete !" = "Echec pour trouver la recette à effacer!";
 "Error !" = "Erreur !";
+
 
 // RecipeListTableViewController
 "Total matches : " = "Correspondances : ";

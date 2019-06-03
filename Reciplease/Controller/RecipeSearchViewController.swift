@@ -106,7 +106,7 @@ class RecipeSearchViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToRecipeList" {
             if let recipeListTableVC = segue.destination as? RecipeListTableViewController {
-            recipeListTableVC.recipeListMatches = resultRecipeList
+            recipeListTableVC.resultRecipeListMatches = resultRecipeList
             recipeListTableVC.numberOfResult = numberOfResult
             }
         }
@@ -164,6 +164,3 @@ extension RecipeSearchViewController {
         self.present(alert, animated: true, completion: nil)
     }
 }
-
-// TODO:    
-//          - passer sur le master

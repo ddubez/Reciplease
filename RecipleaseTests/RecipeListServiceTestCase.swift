@@ -112,10 +112,7 @@ class RecipeListServiceTestCase: XCTestCase {
                                             XCTAssertFalse(success)
                                             XCTAssertNil(recipeListMatches)
                                             XCTAssertNil(numberOfResult)
-                                            if let error = error {
-                                                XCTAssertEqual(error.message,
-                                                               "Error !")
-                                            }
+                                            XCTAssertNotNil(error)
                                             expectation.fulfill()
         }
 

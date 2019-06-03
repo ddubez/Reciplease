@@ -64,4 +64,3 @@ extension Recipe {
 
     }
 }
-// TODO:    - encode ingredients line

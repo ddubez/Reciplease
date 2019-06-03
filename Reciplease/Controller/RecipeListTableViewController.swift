@@ -11,19 +11,15 @@ import UIKit
 class RecipeListTableViewController: UITableViewController {
 
     // MARK: - PROPERTIES
-    var recipeListMatches: [RecipeList.Matche]!
+    var resultRecipeListMatches: [RecipeList.Matche]?
     var recipeListToDisplay = [RecipeList.Matche]()
     var numberOfResult = 0
     var selectedRecipeId = ""
     let offSetForLoadingData = CGFloat(100)
     var isLoadingMore = false
-    var dataToDisplay = DataToDisplay.search
+    var isDiplayingFavorite = false
 
     let recipeStorageManager = RecipeStorageManager()
-
-    enum DataToDisplay {
-        case search, favorite
-    }
 
     // MARK: - IBOUTLETS
     @IBOutlet weak var totalMatchesLabel: UILabel!
@@ -34,28 +30,26 @@ class RecipeListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if recipeListMatches == nil {
-            dataToDisplay = .favorite
-        } else {
-            dataToDisplay = .search
-        }
-
-        switch dataToDisplay {
-        case .search:
+        if let recipeListMatches = resultRecipeListMatches {
+            isDiplayingFavorite = false
             recipeListToDisplay = recipeListMatches
             totalMatchesLabel.text = formatNumberOfResults(with: numberOfResult,
-                                                           title: NSLocalizedString("Total matches : ", comment: ""))
-        case .favorite:
+                                                           title: NSLocalizedString("Total matches : ",
+                                                                                    comment: ""))
+        } else {
+            isDiplayingFavorite = true
             recipeListToDisplay = importFavoriteRecipe()
             totalMatchesLabel.text = formatNumberOfResults(with: recipeListToDisplay.count,
-                                                    title: NSLocalizedString("Number of favorites : ", comment: ""))
+                                                           title: NSLocalizedString("Number of favorites : ",
+                                                                                    comment: ""))
         }
+
         footerRecipeListTableView.isHidden = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if dataToDisplay == .favorite {
+        if isDiplayingFavorite == true {
             recipeListToDisplay = importFavoriteRecipe()
             totalMatchesLabel.text = formatNumberOfResults(with: recipeListToDisplay.count,
                                                     title: NSLocalizedString("Number of favorites : ", comment: ""))
@@ -75,7 +69,6 @@ class RecipeListTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -184,47 +177,11 @@ class RecipeListTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToRecipe" {
             if let recipeVC = segue.destination as? RecipeViewController {
-                recipeVC.recipeId = selectedRecipeId
+                recipeVC.selectedRecipeId = selectedRecipeId
             }
         }
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle:
-     UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array,
-     and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 }
 // MARK: - Alert
 extension RecipeListTableViewController {
@@ -235,7 +192,3 @@ extension RecipeListTableViewController {
         self.present(alert, animated: true, completion: nil)
     }
 }
-// TODO:    - Refactoriser
-//          - refactoriser enum dataToDisplay
-//             - commentaires
-//          - traiter l'optionnel à l'entrée

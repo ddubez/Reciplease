@@ -15,7 +15,10 @@
 "There is no recipe in the API response !" = "There is no recipe in the API response !";
 "There is no image in the API response !" = "There is no image in the API response !";
 "Failed to insert new object in storage !" = "Failed to insert new object in storage !";
+"Failed to save context !" = "Failed to save context !";
 "Failed to save recipe !" = "Failed to save recipe !";
+"Failed to delete recipe !" = "Failed to delete recipe !";
+"Failed to find recipe to delete !" = "Failed to find recipe to delete !";
 "Error !" = "Error !";
 
 // RecipeListTableViewController

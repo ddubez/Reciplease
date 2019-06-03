@@ -63,17 +63,19 @@ class RecipeStorageManager {
             do {
                 try backgroundContext.save()
             } catch {
-                throw RSMError.cantSaveContext
+                throw RSMError.cantSaveRecipe
             }
-        } else {
-            throw RSMError.cantSaveRecipe
         }
     }
 
-    func removeRecipe(objectID: NSManagedObjectID) throws {
-        //Remove the object from the backgroundContext
-        let obj = backgroundContext.object(with: objectID)
-        backgroundContext.delete(obj)
+    func deleteRecipe(recipeId: String) throws {
+        //fetch the objet saved with the recipe ID
+        guard let recipeToDelete = fetchStored(recipeId: recipeId) else {
+            throw RSMError.cantFindRecipeToDelete
+        }
+
+         //Remove the object from the backgroundContext
+        backgroundContext.delete(backgroundContext.object(with: recipeToDelete.objectID))
 
         //Save the backgroundContext
         if backgroundContext.hasChanges {
@@ -178,5 +180,6 @@ extension RecipeStorageManager {
         case cantSaveContext
         case cantSaveRecipe
         case cantDeleteRecipe
+        case cantFindRecipeToDelete
     }
 }

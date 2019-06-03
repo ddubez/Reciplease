@@ -52,9 +52,11 @@ extension Error {
                 return NSLocalizedString("Failed to save recipe !", comment: "")
             case .cantDeleteRecipe:
                 return NSLocalizedString("Failed to delete recipe !", comment: "")
+            case .cantFindRecipeToDelete:
+                return NSLocalizedString("Failed to find recipe to delete !", comment: "")
             }
         } else {
-            return NSLocalizedString("Error !", comment: "")
+            return "\(NSLocalizedString("Error !", comment: ""))" + "\n" + String(describing: self)
         }
     }
 }
